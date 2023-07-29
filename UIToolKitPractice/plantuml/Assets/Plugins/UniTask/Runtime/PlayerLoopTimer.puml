@@ -1,0 +1,24 @@
+@startuml
+abstract class PlayerLoopTimer {
+    + {static} Create(interval:TimeSpan, periodic:bool, delayType:DelayType, playerLoopTiming:PlayerLoopTiming, cancellationToken:CancellationToken, timerCallback:Action<object>, state:object) : PlayerLoopTimer
+    + {static} StartNew(interval:TimeSpan, periodic:bool, delayType:DelayType, playerLoopTiming:PlayerLoopTiming, cancellationToken:CancellationToken, timerCallback:Action<object>, state:object) : PlayerLoopTimer
+    + Restart() : void
+    + Restart(interval:TimeSpan) : void
+    + Stop() : void
+    + Dispose() : void
+}
+class DeltaTimePlayerLoopTimer <<sealed>> {
+    + DeltaTimePlayerLoopTimer(interval:TimeSpan, periodic:bool, playerLoopTiming:PlayerLoopTiming, cancellationToken:CancellationToken, timerCallback:Action<object>, state:object)
+}
+class IgnoreTimeScalePlayerLoopTimer <<sealed>> {
+    + IgnoreTimeScalePlayerLoopTimer(interval:TimeSpan, periodic:bool, playerLoopTiming:PlayerLoopTiming, cancellationToken:CancellationToken, timerCallback:Action<object>, state:object)
+}
+class RealtimePlayerLoopTimer <<sealed>> {
+    + RealtimePlayerLoopTimer(interval:TimeSpan, periodic:bool, playerLoopTiming:PlayerLoopTiming, cancellationToken:CancellationToken, timerCallback:Action<object>, state:object)
+}
+IDisposable <|-- PlayerLoopTimer
+IPlayerLoopItem <|-- PlayerLoopTimer
+PlayerLoopTimer <|-- DeltaTimePlayerLoopTimer
+PlayerLoopTimer <|-- IgnoreTimeScalePlayerLoopTimer
+PlayerLoopTimer <|-- RealtimePlayerLoopTimer
+@enduml

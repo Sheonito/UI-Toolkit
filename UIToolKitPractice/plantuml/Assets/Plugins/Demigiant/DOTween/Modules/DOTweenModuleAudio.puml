@@ -1,0 +1,6 @@
+@startuml
+class DOTweenModuleAudio <<static>> {
+    + {static} DOFade(target:AudioSource, endValue:float, duration:float) : TweenerCore<float, float, FloatOptions>
+    + {static} DOPitch(target:AudioSource, endValue:float, duration:float) : TweenerCore<float, float, FloatOptions>
+}
+@enduml

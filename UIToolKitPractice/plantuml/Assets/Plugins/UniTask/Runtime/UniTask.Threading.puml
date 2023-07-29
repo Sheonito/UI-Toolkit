@@ -1,0 +1,58 @@
+@startuml
+class UniTask <<struct>> {
+    + {static} SwitchToThreadPool() : SwitchToThreadPoolAwaitable
+    + {static} SwitchToTaskPool() : SwitchToTaskPoolAwaitable
+    + {static} SwitchToSynchronizationContext(synchronizationContext:SynchronizationContext, cancellationToken:CancellationToken) : SwitchToSynchronizationContextAwaitable
+    + {static} ReturnToSynchronizationContext(synchronizationContext:SynchronizationContext, cancellationToken:CancellationToken) : ReturnToSynchronizationContext
+    + {static} ReturnToCurrentSynchronizationContext(dontPostWhenSameContext:bool, cancellationToken:CancellationToken) : ReturnToSynchronizationContext
+}
+class SwitchToThreadPoolAwaitable <<struct>> {
+    + GetAwaiter() : Awaiter
+}
+class SwitchToTaskPoolAwaitable <<struct>> {
+    + GetAwaiter() : Awaiter
+}
+class SwitchToSynchronizationContextAwaitable <<struct>> {
+    + SwitchToSynchronizationContextAwaitable(synchronizationContext:SynchronizationContext, cancellationToken:CancellationToken)
+    + GetAwaiter() : Awaiter
+}
+class ReturnToSynchronizationContext <<struct>> {
+    + ReturnToSynchronizationContext(syncContext:SynchronizationContext, dontPostWhenSameContext:bool, cancellationToken:CancellationToken)
+    + DisposeAsync() : Awaiter
+}
+class Awaiter <<struct>> {
+    + IsCompleted : bool <<get>>
+    + GetResult() : void
+    + OnCompleted(continuation:Action) : void
+    + UnsafeOnCompleted(continuation:Action) : void
+}
+class Awaiter <<struct>> {
+    + IsCompleted : bool <<get>>
+    + GetResult() : void
+    + OnCompleted(continuation:Action) : void
+    + UnsafeOnCompleted(continuation:Action) : void
+}
+class Awaiter <<struct>> {
+    + Awaiter(synchronizationContext:SynchronizationContext, cancellationToken:CancellationToken)
+    + IsCompleted : bool <<get>>
+    + GetResult() : void
+    + OnCompleted(continuation:Action) : void
+    + UnsafeOnCompleted(continuation:Action) : void
+}
+class Awaiter <<struct>> {
+    + Awaiter(synchronizationContext:SynchronizationContext, dontPostWhenSameContext:bool, cancellationToken:CancellationToken)
+    + GetAwaiter() : Awaiter
+    + IsCompleted : bool <<get>>
+    + GetResult() : void
+    + OnCompleted(continuation:Action) : void
+    + UnsafeOnCompleted(continuation:Action) : void
+}
+SwitchToThreadPoolAwaitable +-- Awaiter
+ICriticalNotifyCompletion <|-- Awaiter
+SwitchToTaskPoolAwaitable +-- Awaiter
+ICriticalNotifyCompletion <|-- Awaiter
+SwitchToSynchronizationContextAwaitable +-- Awaiter
+ICriticalNotifyCompletion <|-- Awaiter
+ReturnToSynchronizationContext +-- Awaiter
+ICriticalNotifyCompletion <|-- Awaiter
+@enduml

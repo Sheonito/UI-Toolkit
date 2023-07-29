@@ -1,0 +1,9 @@
+@startuml
+class UniTaskTrackerWindow {
+    + {static} OpenWindow() : void
+    + {static} EnableAutoReload : bool <<get>>
+    + {static} EnableTracking : bool <<get>>
+    + {static} EnableStackTrace : bool <<get>>
+}
+EditorWindow <|-- UniTaskTrackerWindow
+@enduml

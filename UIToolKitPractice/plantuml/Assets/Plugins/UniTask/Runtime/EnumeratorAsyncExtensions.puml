@@ -1,0 +1,22 @@
+@startuml
+class EnumeratorAsyncExtensions <<static>> {
+    + {static} GetAwaiter(enumerator:T) : UniTask.Awaiter
+    + {static} WithCancellation(enumerator:IEnumerator, cancellationToken:CancellationToken) : UniTask
+    + {static} ToUniTask(enumerator:IEnumerator, timing:PlayerLoopTiming, cancellationToken:CancellationToken) : UniTask
+    + {static} ToUniTask(enumerator:IEnumerator, coroutineRunner:MonoBehaviour) : UniTask
+}
+class EnumeratorPromise <<sealed>> {
+    + {static} Create(innerEnumerator:IEnumerator, timing:PlayerLoopTiming, cancellationToken:CancellationToken, token:short) : IUniTaskSource
+    + GetResult(token:short) : void
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+    + MoveNext() : bool
+}
+class "ITaskPoolNode`1"<T> {
+}
+EnumeratorAsyncExtensions +-- EnumeratorPromise
+IUniTaskSource <|-- EnumeratorPromise
+IPlayerLoopItem <|-- EnumeratorPromise
+"ITaskPoolNode`1" "<EnumeratorPromise>" <|-- EnumeratorPromise
+@enduml

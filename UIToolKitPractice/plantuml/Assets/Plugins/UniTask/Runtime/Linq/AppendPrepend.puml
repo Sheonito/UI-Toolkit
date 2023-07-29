@@ -1,0 +1,31 @@
+@startuml
+class UniTaskAsyncEnumerable <<static>> <<partial>> {
+    + {static} Append(source:IUniTaskAsyncEnumerable<TSource>, element:TSource) : IUniTaskAsyncEnumerable<TSource>
+    + {static} Prepend(source:IUniTaskAsyncEnumerable<TSource>, element:TSource) : IUniTaskAsyncEnumerable<TSource>
+}
+class "AppendPrepend`1"<TSource> <<sealed>> {
+    + AppendPrepend(source:IUniTaskAsyncEnumerable<TSource>, element:TSource, append:bool)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TSource>
+}
+class "IUniTaskAsyncEnumerable`1"<T> {
+}
+class _AppendPrepend <<sealed>> {
+    + _AppendPrepend(source:IUniTaskAsyncEnumerable<TSource>, element:TSource, append:bool, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+}
+class "IUniTaskAsyncEnumerator`1"<T> {
+}
+enum State {
+    None,
+    RequirePrepend,
+    RequireAppend,
+    Completed,
+}
+"IUniTaskAsyncEnumerable`1" "<TSource>" <|-- "AppendPrepend`1"
+"AppendPrepend`1" +-- _AppendPrepend
+MoveNextSource <|-- _AppendPrepend
+"IUniTaskAsyncEnumerator`1" "<TSource>" <|-- _AppendPrepend
+_AppendPrepend --> "Current" TSource
+_AppendPrepend +-- State
+@enduml

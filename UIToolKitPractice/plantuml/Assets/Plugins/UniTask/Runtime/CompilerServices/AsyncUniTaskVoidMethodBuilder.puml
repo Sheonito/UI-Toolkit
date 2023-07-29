@@ -1,0 +1,12 @@
+@startuml
+class AsyncUniTaskVoidMethodBuilder <<struct>> {
+    + {static} Create() : AsyncUniTaskVoidMethodBuilder
+    + SetException(exception:Exception) : void
+    + SetResult() : void
+    + AwaitOnCompleted(awaiter:TAwaiter, stateMachine:TStateMachine) : void
+    + AwaitUnsafeOnCompleted(awaiter:TAwaiter, stateMachine:TStateMachine) : void
+    + Start(stateMachine:TStateMachine) : void
+    + SetStateMachine(stateMachine:IAsyncStateMachine) : void
+}
+AsyncUniTaskVoidMethodBuilder --> "Task" UniTaskVoid
+@enduml

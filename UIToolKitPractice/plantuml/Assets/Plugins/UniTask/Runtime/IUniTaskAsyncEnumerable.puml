@@ -1,0 +1,27 @@
+@startuml
+interface "IUniTaskAsyncEnumerable`1"<out T> {
+}
+interface "IUniTaskAsyncEnumerator`1"<out T> {
+}
+interface IUniTaskAsyncDisposable {
+}
+interface "IUniTaskOrderedAsyncEnumerable`1"<TElement> {
+}
+interface "IConnectableUniTaskAsyncEnumerable`1"<out T> {
+}
+class UniTaskAsyncEnumerableExtensions <<static>> {
+    + {static} WithCancellation(source:IUniTaskAsyncEnumerable<T>, cancellationToken:CancellationToken) : UniTaskCancelableAsyncEnumerable<T>
+}
+class "UniTaskCancelableAsyncEnumerable`1"<T> <<struct>> {
+    + GetAsyncEnumerator() : Enumerator
+}
+class Enumerator <<struct>> {
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+}
+IUniTaskAsyncDisposable <|-- "IUniTaskAsyncEnumerator`1"
+"IUniTaskAsyncEnumerable`1" "<TElement>" <|-- "IUniTaskOrderedAsyncEnumerable`1"
+"IUniTaskAsyncEnumerable`1" "<T>" <|-- "IConnectableUniTaskAsyncEnumerable`1"
+"UniTaskCancelableAsyncEnumerable`1" +-- Enumerator
+Enumerator --> "Current" T
+@enduml

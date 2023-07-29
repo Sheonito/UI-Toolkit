@@ -1,0 +1,37 @@
+@startuml
+class UniTaskAsyncEnumerable <<static>> <<partial>> {
+    + {static} Publish(source:IUniTaskAsyncEnumerable<TSource>) : IConnectableUniTaskAsyncEnumerable<TSource>
+}
+class "Publish`1"<TSource> <<sealed>> {
+    + Publish(source:IUniTaskAsyncEnumerable<TSource>)
+    + Connect() : IDisposable
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TSource>
+}
+class "IConnectableUniTaskAsyncEnumerable`1"<T> {
+}
+class ConnectDisposable <<sealed>> {
+    + ConnectDisposable(cancellationTokenSource:CancellationTokenSource)
+    + Dispose() : void
+}
+class _Publish <<sealed>> {
+    + _Publish(parent:Publish<TSource>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+    + OnNext(value:TSource) : void
+    + OnCanceled(cancellationToken:CancellationToken) : void
+    + OnCompleted() : void
+    + OnError(ex:Exception) : void
+}
+class "IUniTaskAsyncEnumerator`1"<T> {
+}
+class "ITriggerHandler`1"<T> {
+}
+"IConnectableUniTaskAsyncEnumerable`1" "<TSource>" <|-- "Publish`1"
+"Publish`1" +-- ConnectDisposable
+IDisposable <|-- ConnectDisposable
+"Publish`1" +-- _Publish
+MoveNextSource <|-- _Publish
+"IUniTaskAsyncEnumerator`1" "<TSource>" <|-- _Publish
+"ITriggerHandler`1" "<TSource>" <|-- _Publish
+_Publish --> "Current" TSource
+@enduml

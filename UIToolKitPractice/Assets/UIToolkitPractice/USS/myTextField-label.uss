@@ -1,0 +1,101 @@
+.myTextField-label > .unity-base-field__label {
+    align-items: stretch;
+    width: 130px;
+    height: 60px;
+    -unity-font-definition: url('project://database/Assets/UIToolkitPractice/Font/PRETENDARD-MEDIUM%20SDF.asset?fileID=11400000&guid=5eb07b47608dbbe4086d7efa7cf7703d&type=2#PRETENDARD-MEDIUM SDF');
+    font-size: 42px;
+    -unity-text-align: middle-left;
+    white-space: nowrap;
+    max-width: 200px;
+    max-height: 200px;
+    min-width: 50px;
+    min-height: 50px;
+    flex-direction: column;
+}
+
+.myTextField-input > .unity-base-field__input {
+    width: 420px;
+    height: 50px;
+    font-size: 36px;
+    -unity-text-align: middle-center;
+    white-space: nowrap;
+    align-items: flex-start;
+    -unity-font-definition: url('project://database/Assets/UIToolkitPractice/Font/PRETENDARD-MEDIUM%20SDF.asset?fileID=11400000&guid=5eb07b47608dbbe4086d7efa7cf7703d&type=2#PRETENDARD-MEDIUM SDF');
+    justify-content: flex-start;
+    top: auto;
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.nicknamepopup-scaleup {
+    background-color: rgb(255, 255, 255);
+    transition-timing-function: ease-out-back;
+    width: 1280px;
+    height: 680px;
+    transition-duration: 1s;
+    border-top-left-radius: 60px;
+    border-bottom-left-radius: 60px;
+    border-top-right-radius: 60px;
+    border-bottom-right-radius: 60px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nicknamepopup-scaledown {
+    transition-timing-function: ease;
+    scale: 0 0;
+    width: 0;
+    height: 0;
+}
+
+.textField-fadein {
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    -unity-text-align: upper-left;
+    display: flex;
+    transition-duration: 1s;
+    transition-property: opacity;
+}
+
+.textField-fadeout {
+    opacity: 0;
+    transition-property: opacity;
+}
+
+.button-fadein {
+    width: 420px;
+    height: 80px;
+    font-size: 42px;
+    -unity-font-definition: url('project://database/Assets/UIToolkitPractice/Font/PRETENDARD-BOLD%20SDF.asset?fileID=11400000&guid=551bff6919cbe704f90fb0d981ead898&type=2#PRETENDARD-BOLD SDF');
+    -unity-text-align: upper-center;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: rgb(255, 255, 255);
+    border-left-color: rgb(0, 0, 0);
+    border-right-color: rgb(0, 0, 0);
+    border-top-color: rgb(0, 0, 0);
+    border-bottom-color: rgb(0, 0, 0);
+    transition-timing-function: ease;
+    transition-duration: 1s;
+    display: flex;
+}
+
+.button-fadeout {
+    transition-property: opacity;
+    opacity: 0;
+}

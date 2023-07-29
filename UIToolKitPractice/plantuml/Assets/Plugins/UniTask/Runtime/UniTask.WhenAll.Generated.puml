@@ -1,0 +1,146 @@
+@startuml
+class UniTask <<struct>> {
+    + {static} WhenAll(task1:UniTask<T1>, task2:UniTask<T2>) : UniTask<(T1, T2)>
+    + {static} WhenAll(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>) : UniTask<(T1, T2, T3)>
+    + {static} WhenAll(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>) : UniTask<(T1, T2, T3, T4)>
+    + {static} WhenAll(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>) : UniTask<(T1, T2, T3, T4, T5)>
+    + {static} WhenAll(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>, task6:UniTask<T6>) : UniTask<(T1, T2, T3, T4, T5, T6)>
+    + {static} WhenAll(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>, task6:UniTask<T6>, task7:UniTask<T7>) : UniTask<(T1, T2, T3, T4, T5, T6, T7)>
+    + {static} WhenAll(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>, task6:UniTask<T6>, task7:UniTask<T7>, task8:UniTask<T8>) : UniTask<(T1, T2, T3, T4, T5, T6, T7, T8)>
+    + {static} WhenAll(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>, task6:UniTask<T6>, task7:UniTask<T7>, task8:UniTask<T8>, task9:UniTask<T9>) : UniTask<(T1, T2, T3, T4, T5, T6, T7, T8, T9)>
+    + {static} WhenAll(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>, task6:UniTask<T6>, task7:UniTask<T7>, task8:UniTask<T8>, task9:UniTask<T9>, task10:UniTask<T10>) : UniTask<(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10)>
+    + {static} WhenAll(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>, task6:UniTask<T6>, task7:UniTask<T7>, task8:UniTask<T8>, task9:UniTask<T9>, task10:UniTask<T10>, task11:UniTask<T11>) : UniTask<(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11)>
+    + {static} WhenAll(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>, task6:UniTask<T6>, task7:UniTask<T7>, task8:UniTask<T8>, task9:UniTask<T9>, task10:UniTask<T10>, task11:UniTask<T11>, task12:UniTask<T12>) : UniTask<(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12)>
+    + {static} WhenAll(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>, task6:UniTask<T6>, task7:UniTask<T7>, task8:UniTask<T8>, task9:UniTask<T9>, task10:UniTask<T10>, task11:UniTask<T11>, task12:UniTask<T12>, task13:UniTask<T13>) : UniTask<(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13)>
+    + {static} WhenAll(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>, task6:UniTask<T6>, task7:UniTask<T7>, task8:UniTask<T8>, task9:UniTask<T9>, task10:UniTask<T10>, task11:UniTask<T11>, task12:UniTask<T12>, task13:UniTask<T13>, task14:UniTask<T14>) : UniTask<(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14)>
+    + {static} WhenAll(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>, task6:UniTask<T6>, task7:UniTask<T7>, task8:UniTask<T8>, task9:UniTask<T9>, task10:UniTask<T10>, task11:UniTask<T11>, task12:UniTask<T12>, task13:UniTask<T13>, task14:UniTask<T14>, task15:UniTask<T15>) : UniTask<(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15)>
+}
+class "WhenAllPromise`2"<T1,T2> <<sealed>> {
+    + WhenAllPromise(task1:UniTask<T1>, task2:UniTask<T2>)
+    + GetResult(token:short) : (T1, T2)
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class "WhenAllPromise`3"<T1,T2,T3> <<sealed>> {
+    + WhenAllPromise(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>)
+    + GetResult(token:short) : (T1, T2, T3)
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class "WhenAllPromise`4"<T1,T2,T3,T4> <<sealed>> {
+    + WhenAllPromise(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>)
+    + GetResult(token:short) : (T1, T2, T3, T4)
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class "WhenAllPromise`5"<T1,T2,T3,T4,T5> <<sealed>> {
+    + WhenAllPromise(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>)
+    + GetResult(token:short) : (T1, T2, T3, T4, T5)
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class "WhenAllPromise`6"<T1,T2,T3,T4,T5,T6> <<sealed>> {
+    + WhenAllPromise(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>, task6:UniTask<T6>)
+    + GetResult(token:short) : (T1, T2, T3, T4, T5, T6)
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class "WhenAllPromise`7"<T1,T2,T3,T4,T5,T6,T7> <<sealed>> {
+    + WhenAllPromise(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>, task6:UniTask<T6>, task7:UniTask<T7>)
+    + GetResult(token:short) : (T1, T2, T3, T4, T5, T6, T7)
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class "WhenAllPromise`8"<T1,T2,T3,T4,T5,T6,T7,T8> <<sealed>> {
+    + WhenAllPromise(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>, task6:UniTask<T6>, task7:UniTask<T7>, task8:UniTask<T8>)
+    + GetResult(token:short) : (T1, T2, T3, T4, T5, T6, T7, T8)
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class "WhenAllPromise`9"<T1,T2,T3,T4,T5,T6,T7,T8,T9> <<sealed>> {
+    + WhenAllPromise(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>, task6:UniTask<T6>, task7:UniTask<T7>, task8:UniTask<T8>, task9:UniTask<T9>)
+    + GetResult(token:short) : (T1, T2, T3, T4, T5, T6, T7, T8, T9)
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class "WhenAllPromise`10"<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10> <<sealed>> {
+    + WhenAllPromise(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>, task6:UniTask<T6>, task7:UniTask<T7>, task8:UniTask<T8>, task9:UniTask<T9>, task10:UniTask<T10>)
+    + GetResult(token:short) : (T1, T2, T3, T4, T5, T6, T7, T8, T9, T10)
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class "WhenAllPromise`11"<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11> <<sealed>> {
+    + WhenAllPromise(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>, task6:UniTask<T6>, task7:UniTask<T7>, task8:UniTask<T8>, task9:UniTask<T9>, task10:UniTask<T10>, task11:UniTask<T11>)
+    + GetResult(token:short) : (T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11)
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class "WhenAllPromise`12"<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12> <<sealed>> {
+    + WhenAllPromise(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>, task6:UniTask<T6>, task7:UniTask<T7>, task8:UniTask<T8>, task9:UniTask<T9>, task10:UniTask<T10>, task11:UniTask<T11>, task12:UniTask<T12>)
+    + GetResult(token:short) : (T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12)
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class "WhenAllPromise`13"<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13> <<sealed>> {
+    + WhenAllPromise(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>, task6:UniTask<T6>, task7:UniTask<T7>, task8:UniTask<T8>, task9:UniTask<T9>, task10:UniTask<T10>, task11:UniTask<T11>, task12:UniTask<T12>, task13:UniTask<T13>)
+    + GetResult(token:short) : (T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13)
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class "WhenAllPromise`14"<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14> <<sealed>> {
+    + WhenAllPromise(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>, task6:UniTask<T6>, task7:UniTask<T7>, task8:UniTask<T8>, task9:UniTask<T9>, task10:UniTask<T10>, task11:UniTask<T11>, task12:UniTask<T12>, task13:UniTask<T13>, task14:UniTask<T14>)
+    + GetResult(token:short) : (T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14)
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class "WhenAllPromise`15"<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15> <<sealed>> {
+    + WhenAllPromise(task1:UniTask<T1>, task2:UniTask<T2>, task3:UniTask<T3>, task4:UniTask<T4>, task5:UniTask<T5>, task6:UniTask<T6>, task7:UniTask<T7>, task8:UniTask<T8>, task9:UniTask<T9>, task10:UniTask<T10>, task11:UniTask<T11>, task12:UniTask<T12>, task13:UniTask<T13>, task14:UniTask<T14>, task15:UniTask<T15>)
+    + GetResult(token:short) : (T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15)
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class "IUniTaskSource`1"<T> {
+}
+UniTask +-- "WhenAllPromise`2"
+"IUniTaskSource`1" "<(T1, T2)>" <|-- "WhenAllPromise`2"
+UniTask +-- "WhenAllPromise`3"
+"IUniTaskSource`1" "<(T1, T2, T3)>" <|-- "WhenAllPromise`3"
+UniTask +-- "WhenAllPromise`4"
+"IUniTaskSource`1" "<(T1, T2, T3, T4)>" <|-- "WhenAllPromise`4"
+UniTask +-- "WhenAllPromise`5"
+"IUniTaskSource`1" "<(T1, T2, T3, T4, T5)>" <|-- "WhenAllPromise`5"
+UniTask +-- "WhenAllPromise`6"
+"IUniTaskSource`1" "<(T1, T2, T3, T4, T5, T6)>" <|-- "WhenAllPromise`6"
+UniTask +-- "WhenAllPromise`7"
+"IUniTaskSource`1" "<(T1, T2, T3, T4, T5, T6, T7)>" <|-- "WhenAllPromise`7"
+UniTask +-- "WhenAllPromise`8"
+"IUniTaskSource`1" "<(T1, T2, T3, T4, T5, T6, T7, T8)>" <|-- "WhenAllPromise`8"
+UniTask +-- "WhenAllPromise`9"
+"IUniTaskSource`1" "<(T1, T2, T3, T4, T5, T6, T7, T8, T9)>" <|-- "WhenAllPromise`9"
+UniTask +-- "WhenAllPromise`10"
+"IUniTaskSource`1" "<(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10)>" <|-- "WhenAllPromise`10"
+UniTask +-- "WhenAllPromise`11"
+"IUniTaskSource`1" "<(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11)>" <|-- "WhenAllPromise`11"
+UniTask +-- "WhenAllPromise`12"
+"IUniTaskSource`1" "<(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12)>" <|-- "WhenAllPromise`12"
+UniTask +-- "WhenAllPromise`13"
+"IUniTaskSource`1" "<(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13)>" <|-- "WhenAllPromise`13"
+UniTask +-- "WhenAllPromise`14"
+"IUniTaskSource`1" "<(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14)>" <|-- "WhenAllPromise`14"
+UniTask +-- "WhenAllPromise`15"
+"IUniTaskSource`1" "<(T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15)>" <|-- "WhenAllPromise`15"
+@enduml

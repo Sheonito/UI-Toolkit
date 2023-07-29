@@ -1,0 +1,21 @@
+@startuml
+class "WeakDictionary`2"<TKey,TValue> {
+    + WeakDictionary(capacity:int, loadFactor:float, keyComparer:IEqualityComparer<TKey>)
+    + TryAdd(key:TKey, value:TValue) : bool
+    + TryGetValue(key:TKey, value:TValue) : bool
+    + TryRemove(key:TKey) : bool
+    + ToList() : List<KeyValuePair<TKey, TValue>>
+    + ToList(list:List<KeyValuePair<TKey, TValue>>, clear:bool) : int
+}
+class Entry {
+    + Hash : int
+    + <<override>> ToString() : string
+}
+class "WeakReference`1"<T> {
+}
+"WeakDictionary`2" +-- Entry
+Entry --> "Key<TKey>" "WeakReference`1"
+Entry --> "Value" TValue
+Entry --> "Prev" Entry
+Entry --> "Next" Entry
+@enduml

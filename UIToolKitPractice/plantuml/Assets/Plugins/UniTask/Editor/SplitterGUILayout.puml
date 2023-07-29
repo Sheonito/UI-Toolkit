@@ -1,0 +1,7 @@
+@startuml
+class SplitterGUILayout <<static>> {
+    + {static} CreateSplitterState(relativeSizes:float[], minSizes:int[], maxSizes:int[]) : object
+    + {static} BeginVerticalSplit(splitterState:object, options:GUILayoutOption[]) : void
+    + {static} EndVerticalSplit() : void
+}
+@enduml

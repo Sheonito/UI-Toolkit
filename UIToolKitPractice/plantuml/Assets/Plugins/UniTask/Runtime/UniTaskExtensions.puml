@@ -1,0 +1,54 @@
+@startuml
+class UniTaskExtensions <<static>> <<partial>> {
+    + {static} AsUniTask(task:Task<T>, useCurrentSynchronizationContext:bool) : UniTask<T>
+    + {static} AsUniTask(task:Task, useCurrentSynchronizationContext:bool) : UniTask
+    + {static} AsTask(task:UniTask<T>) : Task<T>
+    + {static} AsTask(task:UniTask) : Task
+    + {static} ToAsyncLazy(task:UniTask) : AsyncLazy
+    + {static} ToAsyncLazy(task:UniTask<T>) : AsyncLazy<T>
+    + {static} AttachExternalCancellation(task:UniTask, cancellationToken:CancellationToken) : UniTask
+    + {static} AttachExternalCancellation(task:UniTask<T>, cancellationToken:CancellationToken) : UniTask<T>
+    + {static} Forget(task:UniTask) : void
+    + {static} Forget(task:UniTask, exceptionHandler:Action<Exception>, handleExceptionOnMainThread:bool) : void
+    + {static} Forget(task:UniTask<T>) : void
+    + {static} Forget(task:UniTask<T>, exceptionHandler:Action<Exception>, handleExceptionOnMainThread:bool) : void
+    + {static} <<async>> ContinueWith(task:UniTask<T>, continuationFunction:Action<T>) : UniTask
+    + {static} <<async>> ContinueWith(task:UniTask<T>, continuationFunction:Func<T, UniTask>) : UniTask
+    + {static} <<async>> ContinueWith(task:UniTask<T>, continuationFunction:Func<T, TR>) : UniTask<TR>
+    + {static} <<async>> ContinueWith(task:UniTask<T>, continuationFunction:Func<T, UniTask<TR>>) : UniTask<TR>
+    + {static} <<async>> ContinueWith(task:UniTask, continuationFunction:Action) : UniTask
+    + {static} <<async>> ContinueWith(task:UniTask, continuationFunction:Func<UniTask>) : UniTask
+    + {static} <<async>> ContinueWith(task:UniTask, continuationFunction:Func<T>) : UniTask<T>
+    + {static} <<async>> ContinueWith(task:UniTask, continuationFunction:Func<UniTask<T>>) : UniTask<T>
+    + {static} <<async>> Unwrap(task:UniTask<UniTask<T>>) : UniTask<T>
+    + {static} <<async>> Unwrap(task:UniTask<UniTask>) : UniTask
+    + {static} <<async>> Unwrap(task:Task<UniTask<T>>) : UniTask<T>
+    + {static} <<async>> Unwrap(task:Task<UniTask<T>>, continueOnCapturedContext:bool) : UniTask<T>
+    + {static} <<async>> Unwrap(task:Task<UniTask>) : UniTask
+    + {static} <<async>> Unwrap(task:Task<UniTask>, continueOnCapturedContext:bool) : UniTask
+    + {static} <<async>> Unwrap(task:UniTask<Task<T>>) : UniTask<T>
+    + {static} <<async>> Unwrap(task:UniTask<Task<T>>, continueOnCapturedContext:bool) : UniTask<T>
+    + {static} <<async>> Unwrap(task:UniTask<Task>) : UniTask
+    + {static} <<async>> Unwrap(task:UniTask<Task>, continueOnCapturedContext:bool) : UniTask
+}
+class AttachExternalCancellationSource <<sealed>> {
+    + AttachExternalCancellationSource(task:UniTask, cancellationToken:CancellationToken)
+    + GetResult(token:short) : void
+    + GetStatus(token:short) : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+    + UnsafeGetStatus() : UniTaskStatus
+}
+class "AttachExternalCancellationSource`1"<T> <<sealed>> {
+    + AttachExternalCancellationSource(task:UniTask<T>, cancellationToken:CancellationToken)
+    + GetResult(token:short) : T
+    + GetStatus(token:short) : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+    + UnsafeGetStatus() : UniTaskStatus
+}
+class "IUniTaskSource`1"<T> {
+}
+UniTaskExtensions +-- AttachExternalCancellationSource
+IUniTaskSource <|-- AttachExternalCancellationSource
+UniTaskExtensions +-- "AttachExternalCancellationSource`1"
+"IUniTaskSource`1" "<T>" <|-- "AttachExternalCancellationSource`1"
+@enduml

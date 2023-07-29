@@ -1,0 +1,98 @@
+@startuml
+class UniTaskAsyncEnumerable <<static>> <<partial>> {
+    + {static} Select(source:IUniTaskAsyncEnumerable<TSource>, selector:Func<TSource, TResult>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} Select(source:IUniTaskAsyncEnumerable<TSource>, selector:Func<TSource, Int32, TResult>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} SelectAwait(source:IUniTaskAsyncEnumerable<TSource>, selector:Func<TSource, UniTask<TResult>>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} SelectAwait(source:IUniTaskAsyncEnumerable<TSource>, selector:Func<TSource, Int32, UniTask<TResult>>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} SelectAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, selector:Func<TSource, CancellationToken, UniTask<TResult>>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} SelectAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, selector:Func<TSource, Int32, CancellationToken, UniTask<TResult>>) : IUniTaskAsyncEnumerable<TResult>
+}
+class "Select`2"<TSource,TResult> <<sealed>> {
+    + Select(source:IUniTaskAsyncEnumerable<TSource>, selector:Func<TSource, TResult>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "SelectInt`2"<TSource,TResult> <<sealed>> {
+    + SelectInt(source:IUniTaskAsyncEnumerable<TSource>, selector:Func<TSource, int, TResult>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "SelectAwait`2"<TSource,TResult> <<sealed>> {
+    + SelectAwait(source:IUniTaskAsyncEnumerable<TSource>, selector:Func<TSource, UniTask<TResult>>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "SelectIntAwait`2"<TSource,TResult> <<sealed>> {
+    + SelectIntAwait(source:IUniTaskAsyncEnumerable<TSource>, selector:Func<TSource, int, UniTask<TResult>>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "SelectAwaitWithCancellation`2"<TSource,TResult> <<sealed>> {
+    + SelectAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, selector:Func<TSource, CancellationToken, UniTask<TResult>>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "SelectIntAwaitWithCancellation`2"<TSource,TResult> <<sealed>> {
+    + SelectIntAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, selector:Func<TSource, int, CancellationToken, UniTask<TResult>>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "IUniTaskAsyncEnumerable`1"<T> {
+}
+class _Select <<sealed>> {
+    + _Select(source:IUniTaskAsyncEnumerable<TSource>, selector:Func<TSource, TResult>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+}
+class _Select <<sealed>> {
+    + _Select(source:IUniTaskAsyncEnumerable<TSource>, selector:Func<TSource, int, TResult>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+}
+class _SelectAwait <<sealed>> {
+    + _SelectAwait(source:IUniTaskAsyncEnumerable<TSource>, selector:Func<TSource, UniTask<TResult>>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+}
+class _SelectAwait <<sealed>> {
+    + _SelectAwait(source:IUniTaskAsyncEnumerable<TSource>, selector:Func<TSource, int, UniTask<TResult>>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+}
+class _SelectAwaitWithCancellation <<sealed>> {
+    + _SelectAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, selector:Func<TSource, CancellationToken, UniTask<TResult>>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+}
+class _SelectAwaitWithCancellation <<sealed>> {
+    + _SelectAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, selector:Func<TSource, int, CancellationToken, UniTask<TResult>>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+}
+class "IUniTaskAsyncEnumerator`1"<T> {
+}
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "Select`2"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "SelectInt`2"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "SelectAwait`2"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "SelectIntAwait`2"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "SelectAwaitWithCancellation`2"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "SelectIntAwaitWithCancellation`2"
+"Select`2" +-- _Select
+MoveNextSource <|-- _Select
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _Select
+_Select --> "Current" TResult
+"SelectInt`2" +-- _Select
+MoveNextSource <|-- _Select
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _Select
+_Select --> "Current" TResult
+"SelectAwait`2" +-- _SelectAwait
+MoveNextSource <|-- _SelectAwait
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _SelectAwait
+_SelectAwait --> "Current" TResult
+"SelectIntAwait`2" +-- _SelectAwait
+MoveNextSource <|-- _SelectAwait
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _SelectAwait
+_SelectAwait --> "Current" TResult
+"SelectAwaitWithCancellation`2" +-- _SelectAwaitWithCancellation
+MoveNextSource <|-- _SelectAwaitWithCancellation
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _SelectAwaitWithCancellation
+_SelectAwaitWithCancellation --> "Current" TResult
+"SelectIntAwaitWithCancellation`2" +-- _SelectAwaitWithCancellation
+MoveNextSource <|-- _SelectAwaitWithCancellation
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _SelectAwaitWithCancellation
+_SelectAwaitWithCancellation --> "Current" TResult
+@enduml

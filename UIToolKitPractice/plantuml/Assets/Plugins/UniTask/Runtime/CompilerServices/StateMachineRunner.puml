@@ -1,0 +1,56 @@
+@startuml
+interface IStateMachineRunner {
+}
+interface IStateMachineRunnerPromise {
+}
+interface "IStateMachineRunnerPromise`1"<T> {
+}
+class StateMachineUtility <<static>> {
+    + {static} GetState(stateMachine:IAsyncStateMachine) : int
+}
+class "AsyncUniTaskVoid`1"<TStateMachine> <<sealed>> {
+    + AsyncUniTaskVoid()
+    + {static} SetStateMachine(stateMachine:TStateMachine, runnerFieldRef:IStateMachineRunner) : void
+    + Return() : void
+}
+class "AsyncUniTask`1"<TStateMachine> <<sealed>> {
+    + {static} SetStateMachine(stateMachine:TStateMachine, runnerPromiseFieldRef:IStateMachineRunnerPromise) : void
+    + SetResult() : void
+    + SetException(exception:Exception) : void
+    + GetResult(token:short) : void
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class "AsyncUniTask`2"<TStateMachine,T> <<sealed>> {
+    + {static} SetStateMachine(stateMachine:TStateMachine, runnerPromiseFieldRef:IStateMachineRunnerPromise<T>) : void
+    + SetResult(result:T) : void
+    + SetException(exception:Exception) : void
+    + GetResult(token:short) : T
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class "IUniTaskSource`1"<T> {
+}
+class "ITaskPoolNode`1"<T> {
+}
+class "UniTask`1"<T> {
+}
+IUniTaskSource <|-- IStateMachineRunnerPromise
+"IUniTaskSource`1" "<T>" <|-- "IStateMachineRunnerPromise`1"
+IStateMachineRunner <|-- "AsyncUniTaskVoid`1"
+"ITaskPoolNode`1" "<AsyncUniTaskVoid<TStateMachine>>" <|-- "AsyncUniTaskVoid`1"
+IUniTaskSource <|-- "AsyncUniTaskVoid`1"
+"AsyncUniTaskVoid`1" --> "MoveNext" Action
+IStateMachineRunnerPromise <|-- "AsyncUniTask`1"
+IUniTaskSource <|-- "AsyncUniTask`1"
+"ITaskPoolNode`1" "<AsyncUniTask<TStateMachine>>" <|-- "AsyncUniTask`1"
+"AsyncUniTask`1" --> "MoveNext" Action
+"AsyncUniTask`1" --> "Task" UniTask
+"IStateMachineRunnerPromise`1" "<T>" <|-- "AsyncUniTask`2"
+"IUniTaskSource`1" "<T>" <|-- "AsyncUniTask`2"
+"ITaskPoolNode`1" "<AsyncUniTask<TStateMachine, T>>" <|-- "AsyncUniTask`2"
+"AsyncUniTask`2" --> "MoveNext" Action
+"AsyncUniTask`2" --> "Task<T>" "UniTask`1"
+@enduml

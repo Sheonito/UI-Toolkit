@@ -1,0 +1,23 @@
+@startuml
+class UniTaskAsyncEnumerable <<static>> <<partial>> {
+    + {static} SkipLast(source:IUniTaskAsyncEnumerable<TSource>, count:Int32) : IUniTaskAsyncEnumerable<TSource>
+}
+class "SkipLast`1"<TSource> <<sealed>> {
+    + SkipLast(source:IUniTaskAsyncEnumerable<TSource>, count:int)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TSource>
+}
+class "IUniTaskAsyncEnumerable`1"<T> {
+}
+class _SkipLast <<sealed>> {
+    + _SkipLast(source:IUniTaskAsyncEnumerable<TSource>, count:int, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+}
+class "IUniTaskAsyncEnumerator`1"<T> {
+}
+"IUniTaskAsyncEnumerable`1" "<TSource>" <|-- "SkipLast`1"
+"SkipLast`1" +-- _SkipLast
+MoveNextSource <|-- _SkipLast
+"IUniTaskAsyncEnumerator`1" "<TSource>" <|-- _SkipLast
+_SkipLast --> "Current" TSource
+@enduml

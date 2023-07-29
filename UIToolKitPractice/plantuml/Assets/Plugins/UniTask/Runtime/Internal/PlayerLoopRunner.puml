@@ -1,0 +1,8 @@
+@startuml
+class PlayerLoopRunner <<sealed>> {
+    + PlayerLoopRunner(timing:PlayerLoopTiming)
+    + AddAction(item:IPlayerLoopItem) : void
+    + Clear() : int
+    + Run() : void
+}
+@enduml

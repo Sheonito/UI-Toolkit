@@ -1,0 +1,9 @@
+@startuml
+class "MinimumQueue`1"<T> {
+    + MinimumQueue(capacity:int)
+    + Count : int <<get>>
+    + Peek() : T
+    + Enqueue(item:T) : void
+    + Dequeue() : T
+}
+@enduml

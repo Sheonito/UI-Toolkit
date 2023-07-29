@@ -1,0 +1,28 @@
+@startuml
+class UniTask <<struct>> {
+    + {static} WhenAll(tasks:UniTask<T>[]) : UniTask<T[]>
+    + {static} WhenAll(tasks:IEnumerable<UniTask<T>>) : UniTask<T[]>
+    + {static} WhenAll(tasks:UniTask[]) : UniTask
+    + {static} WhenAll(tasks:IEnumerable<UniTask>) : UniTask
+}
+class "WhenAllPromise`1"<T> <<sealed>> {
+    + WhenAllPromise(tasks:UniTask<T>[], tasksLength:int)
+    + GetResult(token:short) : T[]
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class WhenAllPromise <<sealed>> {
+    + WhenAllPromise(tasks:UniTask[], tasksLength:int)
+    + GetResult(token:short) : void
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class "IUniTaskSource`1"<T> {
+}
+UniTask +-- "WhenAllPromise`1"
+"IUniTaskSource`1" "<T[]>" <|-- "WhenAllPromise`1"
+UniTask +-- WhenAllPromise
+IUniTaskSource <|-- WhenAllPromise
+@enduml

@@ -1,0 +1,76 @@
+@startuml
+class UniTaskAsyncEnumerable <<static>> <<partial>> {
+    + {static} TakeWhile(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, Boolean>) : IUniTaskAsyncEnumerable<TSource>
+    + {static} TakeWhile(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, Int32, Boolean>) : IUniTaskAsyncEnumerable<TSource>
+    + {static} TakeWhileAwait(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, UniTask<Boolean>>) : IUniTaskAsyncEnumerable<TSource>
+    + {static} TakeWhileAwait(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, Int32, UniTask<Boolean>>) : IUniTaskAsyncEnumerable<TSource>
+    + {static} TakeWhileAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, CancellationToken, UniTask<Boolean>>) : IUniTaskAsyncEnumerable<TSource>
+    + {static} TakeWhileAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, Int32, CancellationToken, UniTask<Boolean>>) : IUniTaskAsyncEnumerable<TSource>
+}
+class "TakeWhile`1"<TSource> <<sealed>> {
+    + TakeWhile(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, bool>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TSource>
+}
+class "TakeWhileInt`1"<TSource> <<sealed>> {
+    + TakeWhileInt(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, int, bool>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TSource>
+}
+class "TakeWhileAwait`1"<TSource> <<sealed>> {
+    + TakeWhileAwait(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, UniTask<bool>>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TSource>
+}
+class "TakeWhileIntAwait`1"<TSource> <<sealed>> {
+    + TakeWhileIntAwait(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, int, UniTask<bool>>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TSource>
+}
+class "TakeWhileAwaitWithCancellation`1"<TSource> <<sealed>> {
+    + TakeWhileAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, CancellationToken, UniTask<bool>>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TSource>
+}
+class "TakeWhileIntAwaitWithCancellation`1"<TSource> <<sealed>> {
+    + TakeWhileIntAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, int, CancellationToken, UniTask<bool>>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TSource>
+}
+class "IUniTaskAsyncEnumerable`1"<T> {
+}
+class _TakeWhile {
+    + _TakeWhile(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, bool>, cancellationToken:CancellationToken)
+}
+class _TakeWhileInt {
+    + _TakeWhileInt(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, int, bool>, cancellationToken:CancellationToken)
+}
+class _TakeWhileAwait {
+    + _TakeWhileAwait(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, UniTask<bool>>, cancellationToken:CancellationToken)
+}
+class _TakeWhileIntAwait {
+    + _TakeWhileIntAwait(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, int, UniTask<bool>>, cancellationToken:CancellationToken)
+}
+class _TakeWhileAwaitWithCancellation {
+    + _TakeWhileAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, CancellationToken, UniTask<bool>>, cancellationToken:CancellationToken)
+}
+class _TakeWhileIntAwaitWithCancellation {
+    + _TakeWhileIntAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, int, CancellationToken, UniTask<bool>>, cancellationToken:CancellationToken)
+}
+class "AsyncEnumeratorBase`2"<T1,T2> {
+}
+class "AsyncEnumeratorAwaitSelectorBase`3"<T1,T2,T3> {
+}
+"IUniTaskAsyncEnumerable`1" "<TSource>" <|-- "TakeWhile`1"
+"IUniTaskAsyncEnumerable`1" "<TSource>" <|-- "TakeWhileInt`1"
+"IUniTaskAsyncEnumerable`1" "<TSource>" <|-- "TakeWhileAwait`1"
+"IUniTaskAsyncEnumerable`1" "<TSource>" <|-- "TakeWhileIntAwait`1"
+"IUniTaskAsyncEnumerable`1" "<TSource>" <|-- "TakeWhileAwaitWithCancellation`1"
+"IUniTaskAsyncEnumerable`1" "<TSource>" <|-- "TakeWhileIntAwaitWithCancellation`1"
+"TakeWhile`1" +-- _TakeWhile
+"AsyncEnumeratorBase`2" "<TSource,TSource>" <|-- _TakeWhile
+"TakeWhileInt`1" +-- _TakeWhileInt
+"AsyncEnumeratorBase`2" "<TSource,TSource>" <|-- _TakeWhileInt
+"TakeWhileAwait`1" +-- _TakeWhileAwait
+"AsyncEnumeratorAwaitSelectorBase`3" "<TSource,TSource,bool>" <|-- _TakeWhileAwait
+"TakeWhileIntAwait`1" +-- _TakeWhileIntAwait
+"AsyncEnumeratorAwaitSelectorBase`3" "<TSource,TSource,bool>" <|-- _TakeWhileIntAwait
+"TakeWhileAwaitWithCancellation`1" +-- _TakeWhileAwaitWithCancellation
+"AsyncEnumeratorAwaitSelectorBase`3" "<TSource,TSource,bool>" <|-- _TakeWhileAwaitWithCancellation
+"TakeWhileIntAwaitWithCancellation`1" +-- _TakeWhileIntAwaitWithCancellation
+"AsyncEnumeratorAwaitSelectorBase`3" "<TSource,TSource,bool>" <|-- _TakeWhileIntAwaitWithCancellation
+@enduml

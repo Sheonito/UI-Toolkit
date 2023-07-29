@@ -1,0 +1,12 @@
+@startuml
+interface "ITriggerHandler`1"<T> {
+}
+class "TriggerEvent`1"<T> <<struct>> {
+    + SetResult(value:T) : void
+    + SetCanceled(cancellationToken:CancellationToken) : void
+    + SetCompleted() : void
+    + SetError(exception:Exception) : void
+    + Add(handler:ITriggerHandler<T>) : void
+    + Remove(handler:ITriggerHandler<T>) : void
+}
+@enduml

@@ -1,0 +1,38 @@
+@startuml
+class UniTask <<struct>> {
+    + {static} WhenAny(leftTask:UniTask<T>, rightTask:UniTask) : UniTask<(bool hasResultLeft, T result)>
+    + {static} WhenAny(tasks:UniTask<T>[]) : UniTask<(int winArgumentIndex, T result)>
+    + {static} WhenAny(tasks:IEnumerable<UniTask<T>>) : UniTask<(int winArgumentIndex, T result)>
+    + {static} WhenAny(tasks:UniTask[]) : UniTask<int>
+    + {static} WhenAny(tasks:IEnumerable<UniTask>) : UniTask<int>
+}
+class "WhenAnyLRPromise`1"<T> <<sealed>> {
+    + WhenAnyLRPromise(leftTask:UniTask<T>, rightTask:UniTask)
+    + GetResult(token:short) : (bool, T)
+    + GetStatus(token:short) : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+    + UnsafeGetStatus() : UniTaskStatus
+}
+class "WhenAnyPromise`1"<T> <<sealed>> {
+    + WhenAnyPromise(tasks:UniTask<T>[], tasksLength:int)
+    + GetResult(token:short) : (int, T)
+    + GetStatus(token:short) : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+    + UnsafeGetStatus() : UniTaskStatus
+}
+class WhenAnyPromise <<sealed>> {
+    + WhenAnyPromise(tasks:UniTask[], tasksLength:int)
+    + GetResult(token:short) : int
+    + GetStatus(token:short) : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+    + UnsafeGetStatus() : UniTaskStatus
+}
+class "IUniTaskSource`1"<T> {
+}
+UniTask +-- "WhenAnyLRPromise`1"
+"IUniTaskSource`1" "<(bool, T)>" <|-- "WhenAnyLRPromise`1"
+UniTask +-- "WhenAnyPromise`1"
+"IUniTaskSource`1" "<(int, T)>" <|-- "WhenAnyPromise`1"
+UniTask +-- WhenAnyPromise
+"IUniTaskSource`1" "<int>" <|-- WhenAnyPromise
+@enduml

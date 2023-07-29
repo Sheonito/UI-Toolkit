@@ -1,0 +1,118 @@
+@startuml
+class UniTaskAsyncEnumerable <<static>> <<partial>> {
+    + {static} GroupBy(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, TKey>) : IUniTaskAsyncEnumerable<IGrouping<TKey, TSource>>
+    + {static} GroupBy(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, TKey>, comparer:IEqualityComparer<TKey>) : IUniTaskAsyncEnumerable<IGrouping<TKey, TSource>>
+    + {static} GroupBy(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, TKey>, elementSelector:Func<TSource, TElement>) : IUniTaskAsyncEnumerable<IGrouping<TKey, TElement>>
+    + {static} GroupBy(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, TKey>, elementSelector:Func<TSource, TElement>, comparer:IEqualityComparer<TKey>) : IUniTaskAsyncEnumerable<IGrouping<TKey, TElement>>
+    + {static} GroupBy(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, TKey>, resultSelector:Func<TKey, IEnumerable<TSource>, TResult>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} GroupBy(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, TKey>, resultSelector:Func<TKey, IEnumerable<TSource>, TResult>, comparer:IEqualityComparer<TKey>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} GroupBy(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, TKey>, elementSelector:Func<TSource, TElement>, resultSelector:Func<TKey, IEnumerable<TElement>, TResult>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} GroupBy(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, TKey>, elementSelector:Func<TSource, TElement>, resultSelector:Func<TKey, IEnumerable<TElement>, TResult>, comparer:IEqualityComparer<TKey>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} GroupByAwait(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, UniTask<TKey>>) : IUniTaskAsyncEnumerable<IGrouping<TKey, TSource>>
+    + {static} GroupByAwait(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, UniTask<TKey>>, comparer:IEqualityComparer<TKey>) : IUniTaskAsyncEnumerable<IGrouping<TKey, TSource>>
+    + {static} GroupByAwait(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, UniTask<TKey>>, elementSelector:Func<TSource, UniTask<TElement>>) : IUniTaskAsyncEnumerable<IGrouping<TKey, TElement>>
+    + {static} GroupByAwait(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, UniTask<TKey>>, elementSelector:Func<TSource, UniTask<TElement>>, comparer:IEqualityComparer<TKey>) : IUniTaskAsyncEnumerable<IGrouping<TKey, TElement>>
+    + {static} GroupByAwait(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, UniTask<TKey>>, resultSelector:Func<TKey, IEnumerable<TSource>, UniTask<TResult>>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} GroupByAwait(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, UniTask<TKey>>, elementSelector:Func<TSource, UniTask<TElement>>, resultSelector:Func<TKey, IEnumerable<TElement>, UniTask<TResult>>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} GroupByAwait(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, UniTask<TKey>>, resultSelector:Func<TKey, IEnumerable<TSource>, UniTask<TResult>>, comparer:IEqualityComparer<TKey>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} GroupByAwait(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, UniTask<TKey>>, elementSelector:Func<TSource, UniTask<TElement>>, resultSelector:Func<TKey, IEnumerable<TElement>, UniTask<TResult>>, comparer:IEqualityComparer<TKey>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} GroupByAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, CancellationToken, UniTask<TKey>>) : IUniTaskAsyncEnumerable<IGrouping<TKey, TSource>>
+    + {static} GroupByAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, CancellationToken, UniTask<TKey>>, comparer:IEqualityComparer<TKey>) : IUniTaskAsyncEnumerable<IGrouping<TKey, TSource>>
+    + {static} GroupByAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, CancellationToken, UniTask<TKey>>, elementSelector:Func<TSource, CancellationToken, UniTask<TElement>>) : IUniTaskAsyncEnumerable<IGrouping<TKey, TElement>>
+    + {static} GroupByAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, CancellationToken, UniTask<TKey>>, elementSelector:Func<TSource, CancellationToken, UniTask<TElement>>, comparer:IEqualityComparer<TKey>) : IUniTaskAsyncEnumerable<IGrouping<TKey, TElement>>
+    + {static} GroupByAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, CancellationToken, UniTask<TKey>>, resultSelector:Func<TKey, IEnumerable<TSource>, CancellationToken, UniTask<TResult>>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} GroupByAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, CancellationToken, UniTask<TKey>>, elementSelector:Func<TSource, CancellationToken, UniTask<TElement>>, resultSelector:Func<TKey, IEnumerable<TElement>, CancellationToken, UniTask<TResult>>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} GroupByAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, CancellationToken, UniTask<TKey>>, resultSelector:Func<TKey, IEnumerable<TSource>, CancellationToken, UniTask<TResult>>, comparer:IEqualityComparer<TKey>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} GroupByAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, CancellationToken, UniTask<TKey>>, elementSelector:Func<TSource, CancellationToken, UniTask<TElement>>, resultSelector:Func<TKey, IEnumerable<TElement>, CancellationToken, UniTask<TResult>>, comparer:IEqualityComparer<TKey>) : IUniTaskAsyncEnumerable<TResult>
+}
+class "GroupBy`3"<TSource,TKey,TElement> <<sealed>> {
+    + GroupBy(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, TKey>, elementSelector:Func<TSource, TElement>, comparer:IEqualityComparer<TKey>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<IGrouping<TKey, TElement>>
+}
+class "GroupBy`4"<TSource,TKey,TElement,TResult> <<sealed>> {
+    + GroupBy(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, TKey>, elementSelector:Func<TSource, TElement>, resultSelector:Func<TKey, IEnumerable<TElement>, TResult>, comparer:IEqualityComparer<TKey>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "GroupByAwait`3"<TSource,TKey,TElement> <<sealed>> {
+    + GroupByAwait(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, UniTask<TKey>>, elementSelector:Func<TSource, UniTask<TElement>>, comparer:IEqualityComparer<TKey>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<IGrouping<TKey, TElement>>
+}
+class "GroupByAwait`4"<TSource,TKey,TElement,TResult> <<sealed>> {
+    + GroupByAwait(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, UniTask<TKey>>, elementSelector:Func<TSource, UniTask<TElement>>, resultSelector:Func<TKey, IEnumerable<TElement>, UniTask<TResult>>, comparer:IEqualityComparer<TKey>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "GroupByAwaitWithCancellation`3"<TSource,TKey,TElement> <<sealed>> {
+    + GroupByAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, CancellationToken, UniTask<TKey>>, elementSelector:Func<TSource, CancellationToken, UniTask<TElement>>, comparer:IEqualityComparer<TKey>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<IGrouping<TKey, TElement>>
+}
+class "GroupByAwaitWithCancellation`4"<TSource,TKey,TElement,TResult> <<sealed>> {
+    + GroupByAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, CancellationToken, UniTask<TKey>>, elementSelector:Func<TSource, CancellationToken, UniTask<TElement>>, resultSelector:Func<TKey, IEnumerable<TElement>, CancellationToken, UniTask<TResult>>, comparer:IEqualityComparer<TKey>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "IUniTaskAsyncEnumerable`1"<T> {
+}
+class _GroupBy <<sealed>> {
+    + _GroupBy(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, TKey>, elementSelector:Func<TSource, TElement>, comparer:IEqualityComparer<TKey>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+}
+class _GroupBy <<sealed>> {
+    + _GroupBy(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, TKey>, elementSelector:Func<TSource, TElement>, resultSelector:Func<TKey, IEnumerable<TElement>, TResult>, comparer:IEqualityComparer<TKey>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+}
+class _GroupByAwait <<sealed>> {
+    + _GroupByAwait(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, UniTask<TKey>>, elementSelector:Func<TSource, UniTask<TElement>>, comparer:IEqualityComparer<TKey>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+}
+class _GroupByAwait <<sealed>> {
+    + _GroupByAwait(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, UniTask<TKey>>, elementSelector:Func<TSource, UniTask<TElement>>, resultSelector:Func<TKey, IEnumerable<TElement>, UniTask<TResult>>, comparer:IEqualityComparer<TKey>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+}
+class _GroupByAwaitWithCancellation <<sealed>> {
+    + _GroupByAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, CancellationToken, UniTask<TKey>>, elementSelector:Func<TSource, CancellationToken, UniTask<TElement>>, comparer:IEqualityComparer<TKey>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+}
+class _GroupByAwaitWithCancellation <<sealed>> {
+    + _GroupByAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, keySelector:Func<TSource, CancellationToken, UniTask<TKey>>, elementSelector:Func<TSource, CancellationToken, UniTask<TElement>>, resultSelector:Func<TKey, IEnumerable<TElement>, CancellationToken, UniTask<TResult>>, comparer:IEqualityComparer<TKey>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+}
+class "IUniTaskAsyncEnumerator`1"<T> {
+}
+class "IGrouping`2"<T1,T2> {
+}
+"IUniTaskAsyncEnumerable`1" "<IGrouping<TKey, TElement>>" <|-- "GroupBy`3"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "GroupBy`4"
+"IUniTaskAsyncEnumerable`1" "<IGrouping<TKey, TElement>>" <|-- "GroupByAwait`3"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "GroupByAwait`4"
+"IUniTaskAsyncEnumerable`1" "<IGrouping<TKey, TElement>>" <|-- "GroupByAwaitWithCancellation`3"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "GroupByAwaitWithCancellation`4"
+"GroupBy`3" +-- _GroupBy
+MoveNextSource <|-- _GroupBy
+"IUniTaskAsyncEnumerator`1" "<IGrouping<TKey, TElement>>" <|-- _GroupBy
+_GroupBy --> "Current<TKey,TElement>" "IGrouping`2"
+"GroupBy`4" +-- _GroupBy
+MoveNextSource <|-- _GroupBy
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _GroupBy
+_GroupBy --> "Current" TResult
+"GroupByAwait`3" +-- _GroupByAwait
+MoveNextSource <|-- _GroupByAwait
+"IUniTaskAsyncEnumerator`1" "<IGrouping<TKey, TElement>>" <|-- _GroupByAwait
+_GroupByAwait --> "Current<TKey,TElement>" "IGrouping`2"
+"GroupByAwait`4" +-- _GroupByAwait
+MoveNextSource <|-- _GroupByAwait
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _GroupByAwait
+_GroupByAwait --> "Current" TResult
+"GroupByAwaitWithCancellation`3" +-- _GroupByAwaitWithCancellation
+MoveNextSource <|-- _GroupByAwaitWithCancellation
+"IUniTaskAsyncEnumerator`1" "<IGrouping<TKey, TElement>>" <|-- _GroupByAwaitWithCancellation
+_GroupByAwaitWithCancellation --> "Current<TKey,TElement>" "IGrouping`2"
+"GroupByAwaitWithCancellation`4" +-- _GroupByAwaitWithCancellation
+MoveNextSource <|-- _GroupByAwaitWithCancellation
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _GroupByAwaitWithCancellation
+_GroupByAwaitWithCancellation --> "Current" TResult
+@enduml

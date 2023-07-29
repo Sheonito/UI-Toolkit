@@ -1,0 +1,14 @@
+@startuml
+class AsyncLazy {
+    + AsyncLazy(taskFactory:Func<UniTask>)
+    + GetAwaiter() : UniTask.Awaiter
+}
+class "AsyncLazy`1"<T> {
+    + AsyncLazy(taskFactory:Func<UniTask<T>>)
+    + GetAwaiter() : UniTask<T>.Awaiter
+}
+class "UniTask`1"<T> {
+}
+AsyncLazy --> "Task" UniTask
+"AsyncLazy`1" --> "Task<T>" "UniTask`1"
+@enduml

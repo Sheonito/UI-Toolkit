@@ -1,0 +1,56 @@
+@startuml
+class UnityAsyncExtensions <<static>> <<partial>> {
+    + {static} GetAwaiter(asyncOperation:AsyncOperation) : AsyncOperationAwaiter
+    + {static} WithCancellation(asyncOperation:AsyncOperation, cancellationToken:CancellationToken) : UniTask
+    + {static} ToUniTask(asyncOperation:AsyncOperation, progress:IProgress<float>, timing:PlayerLoopTiming, cancellationToken:CancellationToken) : UniTask
+    + {static} GetAwaiter(asyncOperation:ResourceRequest) : ResourceRequestAwaiter
+    + {static} WithCancellation(asyncOperation:ResourceRequest, cancellationToken:CancellationToken) : UniTask<UnityEngine.Object>
+    + {static} ToUniTask(asyncOperation:ResourceRequest, progress:IProgress<float>, timing:PlayerLoopTiming, cancellationToken:CancellationToken) : UniTask<UnityEngine.Object>
+}
+class AsyncOperationAwaiter <<struct>> {
+    + AsyncOperationAwaiter(asyncOperation:AsyncOperation)
+    + IsCompleted : bool <<get>>
+    + GetResult() : void
+    + OnCompleted(continuation:Action) : void
+    + UnsafeOnCompleted(continuation:Action) : void
+}
+class AsyncOperationConfiguredSource <<sealed>> {
+    + {static} Create(asyncOperation:AsyncOperation, timing:PlayerLoopTiming, progress:IProgress<float>, cancellationToken:CancellationToken, token:short) : IUniTaskSource
+    + GetResult(token:short) : void
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+    + MoveNext() : bool
+}
+class ResourceRequestAwaiter <<struct>> {
+    + ResourceRequestAwaiter(asyncOperation:ResourceRequest)
+    + IsCompleted : bool <<get>>
+    + GetResult() : UnityEngine.Object
+    + OnCompleted(continuation:Action) : void
+    + UnsafeOnCompleted(continuation:Action) : void
+}
+class ResourceRequestConfiguredSource <<sealed>> {
+    + {static} Create(asyncOperation:ResourceRequest, timing:PlayerLoopTiming, progress:IProgress<float>, cancellationToken:CancellationToken, token:short) : IUniTaskSource<UnityEngine.Object>
+    + GetResult(token:short) : UnityEngine.Object
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+    + MoveNext() : bool
+}
+class "ITaskPoolNode`1"<T> {
+}
+class "IUniTaskSource`1"<T> {
+}
+UnityAsyncExtensions +-- AsyncOperationAwaiter
+ICriticalNotifyCompletion <|-- AsyncOperationAwaiter
+UnityAsyncExtensions +-- AsyncOperationConfiguredSource
+IUniTaskSource <|-- AsyncOperationConfiguredSource
+IPlayerLoopItem <|-- AsyncOperationConfiguredSource
+"ITaskPoolNode`1" "<AsyncOperationConfiguredSource>" <|-- AsyncOperationConfiguredSource
+UnityAsyncExtensions +-- ResourceRequestAwaiter
+ICriticalNotifyCompletion <|-- ResourceRequestAwaiter
+UnityAsyncExtensions +-- ResourceRequestConfiguredSource
+"IUniTaskSource`1" "<UnityEngine.Object>" <|-- ResourceRequestConfiguredSource
+IPlayerLoopItem <|-- ResourceRequestConfiguredSource
+"ITaskPoolNode`1" "<ResourceRequestConfiguredSource>" <|-- ResourceRequestConfiguredSource
+@enduml

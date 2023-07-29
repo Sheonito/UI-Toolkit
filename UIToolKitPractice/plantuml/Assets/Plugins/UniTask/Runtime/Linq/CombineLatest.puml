@@ -1,0 +1,218 @@
+@startuml
+class UniTaskAsyncEnumerable <<static>> <<partial>> {
+    + {static} CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, resultSelector:Func<T1, T2, TResult>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, resultSelector:Func<T1, T2, T3, TResult>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, resultSelector:Func<T1, T2, T3, T4, TResult>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, resultSelector:Func<T1, T2, T3, T4, T5, TResult>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, resultSelector:Func<T1, T2, T3, T4, T5, T6, TResult>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, TResult>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, TResult>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, TResult>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, source10:IUniTaskAsyncEnumerable<T10>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TResult>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, source10:IUniTaskAsyncEnumerable<T10>, source11:IUniTaskAsyncEnumerable<T11>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, TResult>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, source10:IUniTaskAsyncEnumerable<T10>, source11:IUniTaskAsyncEnumerable<T11>, source12:IUniTaskAsyncEnumerable<T12>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, TResult>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, source10:IUniTaskAsyncEnumerable<T10>, source11:IUniTaskAsyncEnumerable<T11>, source12:IUniTaskAsyncEnumerable<T12>, source13:IUniTaskAsyncEnumerable<T13>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, TResult>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, source10:IUniTaskAsyncEnumerable<T10>, source11:IUniTaskAsyncEnumerable<T11>, source12:IUniTaskAsyncEnumerable<T12>, source13:IUniTaskAsyncEnumerable<T13>, source14:IUniTaskAsyncEnumerable<T14>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, TResult>) : IUniTaskAsyncEnumerable<TResult>
+    + {static} CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, source10:IUniTaskAsyncEnumerable<T10>, source11:IUniTaskAsyncEnumerable<T11>, source12:IUniTaskAsyncEnumerable<T12>, source13:IUniTaskAsyncEnumerable<T13>, source14:IUniTaskAsyncEnumerable<T14>, source15:IUniTaskAsyncEnumerable<T15>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, TResult>) : IUniTaskAsyncEnumerable<TResult>
+}
+class "CombineLatest`3"<T1,T2,TResult> {
+    + CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, resultSelector:Func<T1, T2, TResult>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "CombineLatest`4"<T1,T2,T3,TResult> {
+    + CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, resultSelector:Func<T1, T2, T3, TResult>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "CombineLatest`5"<T1,T2,T3,T4,TResult> {
+    + CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, resultSelector:Func<T1, T2, T3, T4, TResult>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "CombineLatest`6"<T1,T2,T3,T4,T5,TResult> {
+    + CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, resultSelector:Func<T1, T2, T3, T4, T5, TResult>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "CombineLatest`7"<T1,T2,T3,T4,T5,T6,TResult> {
+    + CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, resultSelector:Func<T1, T2, T3, T4, T5, T6, TResult>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "CombineLatest`8"<T1,T2,T3,T4,T5,T6,T7,TResult> {
+    + CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, TResult>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "CombineLatest`9"<T1,T2,T3,T4,T5,T6,T7,T8,TResult> {
+    + CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, TResult>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "CombineLatest`10"<T1,T2,T3,T4,T5,T6,T7,T8,T9,TResult> {
+    + CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, TResult>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "CombineLatest`11"<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,TResult> {
+    + CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, source10:IUniTaskAsyncEnumerable<T10>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TResult>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "CombineLatest`12"<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,TResult> {
+    + CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, source10:IUniTaskAsyncEnumerable<T10>, source11:IUniTaskAsyncEnumerable<T11>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, TResult>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "CombineLatest`13"<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,TResult> {
+    + CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, source10:IUniTaskAsyncEnumerable<T10>, source11:IUniTaskAsyncEnumerable<T11>, source12:IUniTaskAsyncEnumerable<T12>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, TResult>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "CombineLatest`14"<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,TResult> {
+    + CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, source10:IUniTaskAsyncEnumerable<T10>, source11:IUniTaskAsyncEnumerable<T11>, source12:IUniTaskAsyncEnumerable<T12>, source13:IUniTaskAsyncEnumerable<T13>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, TResult>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "CombineLatest`15"<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,TResult> {
+    + CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, source10:IUniTaskAsyncEnumerable<T10>, source11:IUniTaskAsyncEnumerable<T11>, source12:IUniTaskAsyncEnumerable<T12>, source13:IUniTaskAsyncEnumerable<T13>, source14:IUniTaskAsyncEnumerable<T14>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, TResult>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "CombineLatest`16"<T1,T2,T3,T4,T5,T6,T7,T8,T9,T10,T11,T12,T13,T14,T15,TResult> {
+    + CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, source10:IUniTaskAsyncEnumerable<T10>, source11:IUniTaskAsyncEnumerable<T11>, source12:IUniTaskAsyncEnumerable<T12>, source13:IUniTaskAsyncEnumerable<T13>, source14:IUniTaskAsyncEnumerable<T14>, source15:IUniTaskAsyncEnumerable<T15>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, TResult>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TResult>
+}
+class "IUniTaskAsyncEnumerable`1"<T> {
+}
+class _CombineLatest {
+    + _CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, resultSelector:Func<T1, T2, TResult>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + <<async>> DisposeAsync() : UniTask
+}
+class _CombineLatest {
+    + _CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, resultSelector:Func<T1, T2, T3, TResult>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + <<async>> DisposeAsync() : UniTask
+}
+class _CombineLatest {
+    + _CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, resultSelector:Func<T1, T2, T3, T4, TResult>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + <<async>> DisposeAsync() : UniTask
+}
+class _CombineLatest {
+    + _CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, resultSelector:Func<T1, T2, T3, T4, T5, TResult>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + <<async>> DisposeAsync() : UniTask
+}
+class _CombineLatest {
+    + _CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, resultSelector:Func<T1, T2, T3, T4, T5, T6, TResult>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + <<async>> DisposeAsync() : UniTask
+}
+class _CombineLatest {
+    + _CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, TResult>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + <<async>> DisposeAsync() : UniTask
+}
+class _CombineLatest {
+    + _CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, TResult>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + <<async>> DisposeAsync() : UniTask
+}
+class _CombineLatest {
+    + _CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, TResult>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + <<async>> DisposeAsync() : UniTask
+}
+class _CombineLatest {
+    + _CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, source10:IUniTaskAsyncEnumerable<T10>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, TResult>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + <<async>> DisposeAsync() : UniTask
+}
+class _CombineLatest {
+    + _CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, source10:IUniTaskAsyncEnumerable<T10>, source11:IUniTaskAsyncEnumerable<T11>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, TResult>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + <<async>> DisposeAsync() : UniTask
+}
+class _CombineLatest {
+    + _CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, source10:IUniTaskAsyncEnumerable<T10>, source11:IUniTaskAsyncEnumerable<T11>, source12:IUniTaskAsyncEnumerable<T12>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, TResult>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + <<async>> DisposeAsync() : UniTask
+}
+class _CombineLatest {
+    + _CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, source10:IUniTaskAsyncEnumerable<T10>, source11:IUniTaskAsyncEnumerable<T11>, source12:IUniTaskAsyncEnumerable<T12>, source13:IUniTaskAsyncEnumerable<T13>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, TResult>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + <<async>> DisposeAsync() : UniTask
+}
+class _CombineLatest {
+    + _CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, source10:IUniTaskAsyncEnumerable<T10>, source11:IUniTaskAsyncEnumerable<T11>, source12:IUniTaskAsyncEnumerable<T12>, source13:IUniTaskAsyncEnumerable<T13>, source14:IUniTaskAsyncEnumerable<T14>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, TResult>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + <<async>> DisposeAsync() : UniTask
+}
+class _CombineLatest {
+    + _CombineLatest(source1:IUniTaskAsyncEnumerable<T1>, source2:IUniTaskAsyncEnumerable<T2>, source3:IUniTaskAsyncEnumerable<T3>, source4:IUniTaskAsyncEnumerable<T4>, source5:IUniTaskAsyncEnumerable<T5>, source6:IUniTaskAsyncEnumerable<T6>, source7:IUniTaskAsyncEnumerable<T7>, source8:IUniTaskAsyncEnumerable<T8>, source9:IUniTaskAsyncEnumerable<T9>, source10:IUniTaskAsyncEnumerable<T10>, source11:IUniTaskAsyncEnumerable<T11>, source12:IUniTaskAsyncEnumerable<T12>, source13:IUniTaskAsyncEnumerable<T13>, source14:IUniTaskAsyncEnumerable<T14>, source15:IUniTaskAsyncEnumerable<T15>, resultSelector:Func<T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, TResult>, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + <<async>> DisposeAsync() : UniTask
+}
+class "IUniTaskAsyncEnumerator`1"<T> {
+}
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "CombineLatest`3"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "CombineLatest`4"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "CombineLatest`5"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "CombineLatest`6"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "CombineLatest`7"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "CombineLatest`8"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "CombineLatest`9"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "CombineLatest`10"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "CombineLatest`11"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "CombineLatest`12"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "CombineLatest`13"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "CombineLatest`14"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "CombineLatest`15"
+"IUniTaskAsyncEnumerable`1" "<TResult>" <|-- "CombineLatest`16"
+"CombineLatest`3" +-- _CombineLatest
+MoveNextSource <|-- _CombineLatest
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _CombineLatest
+_CombineLatest --> "Current" TResult
+"CombineLatest`4" +-- _CombineLatest
+MoveNextSource <|-- _CombineLatest
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _CombineLatest
+_CombineLatest --> "Current" TResult
+"CombineLatest`5" +-- _CombineLatest
+MoveNextSource <|-- _CombineLatest
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _CombineLatest
+_CombineLatest --> "Current" TResult
+"CombineLatest`6" +-- _CombineLatest
+MoveNextSource <|-- _CombineLatest
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _CombineLatest
+_CombineLatest --> "Current" TResult
+"CombineLatest`7" +-- _CombineLatest
+MoveNextSource <|-- _CombineLatest
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _CombineLatest
+_CombineLatest --> "Current" TResult
+"CombineLatest`8" +-- _CombineLatest
+MoveNextSource <|-- _CombineLatest
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _CombineLatest
+_CombineLatest --> "Current" TResult
+"CombineLatest`9" +-- _CombineLatest
+MoveNextSource <|-- _CombineLatest
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _CombineLatest
+_CombineLatest --> "Current" TResult
+"CombineLatest`10" +-- _CombineLatest
+MoveNextSource <|-- _CombineLatest
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _CombineLatest
+_CombineLatest --> "Current" TResult
+"CombineLatest`11" +-- _CombineLatest
+MoveNextSource <|-- _CombineLatest
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _CombineLatest
+_CombineLatest --> "Current" TResult
+"CombineLatest`12" +-- _CombineLatest
+MoveNextSource <|-- _CombineLatest
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _CombineLatest
+_CombineLatest --> "Current" TResult
+"CombineLatest`13" +-- _CombineLatest
+MoveNextSource <|-- _CombineLatest
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _CombineLatest
+_CombineLatest --> "Current" TResult
+"CombineLatest`14" +-- _CombineLatest
+MoveNextSource <|-- _CombineLatest
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _CombineLatest
+_CombineLatest --> "Current" TResult
+"CombineLatest`15" +-- _CombineLatest
+MoveNextSource <|-- _CombineLatest
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _CombineLatest
+_CombineLatest --> "Current" TResult
+"CombineLatest`16" +-- _CombineLatest
+MoveNextSource <|-- _CombineLatest
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- _CombineLatest
+_CombineLatest --> "Current" TResult
+@enduml

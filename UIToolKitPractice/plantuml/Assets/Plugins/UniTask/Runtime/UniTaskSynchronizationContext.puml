@@ -1,0 +1,15 @@
+@startuml
+class UniTaskSynchronizationContext {
+    + <<override>> Send(d:SendOrPostCallback, state:object) : void
+    + <<override>> Post(d:SendOrPostCallback, state:object) : void
+    + <<override>> OperationStarted() : void
+    + <<override>> OperationCompleted() : void
+    + <<override>> CreateCopy() : SynchronizationContext
+}
+class Callback <<struct>> {
+    + Callback(callback:SendOrPostCallback, state:object)
+    + Invoke() : void
+}
+SynchronizationContext <|-- UniTaskSynchronizationContext
+UniTaskSynchronizationContext +-- Callback
+@enduml

@@ -1,0 +1,94 @@
+@startuml
+class AwaiterActions <<static>> {
+}
+class UniTask <<struct>> {
+    + UniTask(source:IUniTaskSource, token:short)
+    + GetAwaiter() : Awaiter
+    + SuppressCancellationThrow() : UniTask<bool>
+    + <<override>> ToString() : string
+    + Preserve() : UniTask
+    + AsAsyncUnitUniTask() : UniTask<AsyncUnit>
+}
+class "UniTask`1"<T> <<struct>> {
+    + UniTask(result:T)
+    + UniTask(source:IUniTaskSource<T>, token:short)
+    + GetAwaiter() : Awaiter
+    + Preserve() : UniTask<T>
+    + AsUniTask() : UniTask
+    + SuppressCancellationThrow() : UniTask<(bool IsCanceled, T Result)>
+    + <<override>> ToString() : string
+}
+class AsyncUnitSource <<sealed>> {
+    + AsyncUnitSource(source:IUniTaskSource)
+    + GetResult(token:short) : AsyncUnit
+    + GetStatus(token:short) : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+    + UnsafeGetStatus() : UniTaskStatus
+}
+class IsCanceledSource <<sealed>> {
+    + IsCanceledSource(source:IUniTaskSource)
+    + GetResult(token:short) : bool
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class MemoizeSource <<sealed>> {
+    + MemoizeSource(source:IUniTaskSource)
+    + GetResult(token:short) : void
+    + GetStatus(token:short) : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+    + UnsafeGetStatus() : UniTaskStatus
+}
+class Awaiter <<struct>> {
+    + Awaiter(task:UniTask)
+    + IsCompleted : bool <<get>>
+    + GetResult() : void
+    + OnCompleted(continuation:Action) : void
+    + UnsafeOnCompleted(continuation:Action) : void
+    + SourceOnCompleted(continuation:Action<object>, state:object) : void
+}
+class "AsyncUniTaskMethodBuilder`1"<T> {
+}
+class "ValueTask`1"<T> {
+}
+class IsCanceledSource <<sealed>> {
+    + IsCanceledSource(source:IUniTaskSource<T>)
+    + GetResult(token:short) : (bool, T)
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class MemoizeSource <<sealed>> {
+    + MemoizeSource(source:IUniTaskSource<T>)
+    + GetResult(token:short) : T
+    + GetStatus(token:short) : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+    + UnsafeGetStatus() : UniTaskStatus
+}
+class Awaiter <<struct>> {
+    + Awaiter(task:UniTask<T>)
+    + IsCompleted : bool <<get>>
+    + GetResult() : T
+    + OnCompleted(continuation:Action) : void
+    + UnsafeOnCompleted(continuation:Action) : void
+    + SourceOnCompleted(continuation:Action<object>, state:object) : void
+}
+class "IUniTaskSource`1"<T> {
+}
+UniTask --> "Status" UniTaskStatus
+"UniTask`1" --> "Status" UniTaskStatus
+UniTask +-- AsyncUnitSource
+"IUniTaskSource`1" "<AsyncUnit>" <|-- AsyncUnitSource
+UniTask +-- IsCanceledSource
+"IUniTaskSource`1" "<bool>" <|-- IsCanceledSource
+UniTask +-- MemoizeSource
+IUniTaskSource <|-- MemoizeSource
+UniTask +-- Awaiter
+ICriticalNotifyCompletion <|-- Awaiter
+"UniTask`1" +-- IsCanceledSource
+"IUniTaskSource`1" "<(bool, T)>" <|-- IsCanceledSource
+"UniTask`1" +-- MemoizeSource
+"IUniTaskSource`1" "<T>" <|-- MemoizeSource
+"UniTask`1" +-- Awaiter
+ICriticalNotifyCompletion <|-- Awaiter
+@enduml

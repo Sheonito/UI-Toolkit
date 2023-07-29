@@ -1,0 +1,7 @@
+@startuml
+class "ArrayPool`1"<T> <<sealed>> {
+    + Rent(minimumLength:int) : T[]
+    + Return(array:T[], clearArray:bool) : void
+}
+"ArrayPool`1" o-> "Shared<T>" "ArrayPool`1"
+@enduml

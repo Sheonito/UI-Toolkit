@@ -1,0 +1,19 @@
+@startuml
+class UniTaskTrackerViewItem {
+    + TaskType : string <<get>> <<set>>
+    + Elapsed : string <<get>> <<set>>
+    + Status : string <<get>> <<set>>
+    + Position : string <<get>> <<set>>
+    + PositionFirstLine : string <<get>>
+    + UniTaskTrackerViewItem(id:int)
+}
+class UniTaskTrackerTreeView {
+    + UniTaskTrackerTreeView()
+    + ReloadAndSort() : void
+}
+class "IReadOnlyList`1"<T> {
+}
+TreeViewItem <|-- UniTaskTrackerViewItem
+TreeView <|-- UniTaskTrackerTreeView
+UniTaskTrackerTreeView --> "CurrentBindingItems<TreeViewItem>" "IReadOnlyList`1"
+@enduml

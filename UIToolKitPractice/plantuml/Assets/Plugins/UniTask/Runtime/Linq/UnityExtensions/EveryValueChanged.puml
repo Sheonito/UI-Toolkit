@@ -1,0 +1,41 @@
+@startuml
+class UniTaskAsyncEnumerable <<static>> <<partial>> {
+    + {static} EveryValueChanged(target:TTarget, propertySelector:Func<TTarget, TProperty>, monitorTiming:PlayerLoopTiming, equalityComparer:IEqualityComparer<TProperty>) : IUniTaskAsyncEnumerable<TProperty>
+}
+class "EveryValueChangedUnityObject`2"<TTarget,TProperty> <<sealed>> {
+    + EveryValueChangedUnityObject(target:TTarget, propertySelector:Func<TTarget, TProperty>, equalityComparer:IEqualityComparer<TProperty>, monitorTiming:PlayerLoopTiming)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TProperty>
+}
+class "EveryValueChangedStandardObject`2"<TTarget,TProperty> <<sealed>> {
+    + EveryValueChangedStandardObject(target:TTarget, propertySelector:Func<TTarget, TProperty>, equalityComparer:IEqualityComparer<TProperty>, monitorTiming:PlayerLoopTiming)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TProperty>
+}
+class "IUniTaskAsyncEnumerable`1"<T> {
+}
+class _EveryValueChanged <<sealed>> {
+    + _EveryValueChanged(target:TTarget, propertySelector:Func<TTarget, TProperty>, equalityComparer:IEqualityComparer<TProperty>, monitorTiming:PlayerLoopTiming, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+    + MoveNext() : bool
+}
+class _EveryValueChanged <<sealed>> {
+    + _EveryValueChanged(target:WeakReference<TTarget>, propertySelector:Func<TTarget, TProperty>, equalityComparer:IEqualityComparer<TProperty>, monitorTiming:PlayerLoopTiming, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+    + MoveNext() : bool
+}
+class "IUniTaskAsyncEnumerator`1"<T> {
+}
+"IUniTaskAsyncEnumerable`1" "<TProperty>" <|-- "EveryValueChangedUnityObject`2"
+"IUniTaskAsyncEnumerable`1" "<TProperty>" <|-- "EveryValueChangedStandardObject`2"
+"EveryValueChangedUnityObject`2" +-- _EveryValueChanged
+MoveNextSource <|-- _EveryValueChanged
+"IUniTaskAsyncEnumerator`1" "<TProperty>" <|-- _EveryValueChanged
+IPlayerLoopItem <|-- _EveryValueChanged
+_EveryValueChanged --> "Current" TProperty
+"EveryValueChangedStandardObject`2" +-- _EveryValueChanged
+MoveNextSource <|-- _EveryValueChanged
+"IUniTaskAsyncEnumerator`1" "<TProperty>" <|-- _EveryValueChanged
+IPlayerLoopItem <|-- _EveryValueChanged
+_EveryValueChanged --> "Current" TProperty
+@enduml

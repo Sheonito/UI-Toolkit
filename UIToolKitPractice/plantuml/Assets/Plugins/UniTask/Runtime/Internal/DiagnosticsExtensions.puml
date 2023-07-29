@@ -1,0 +1,5 @@
+@startuml
+class DiagnosticsExtensions <<static>> {
+    + {static} CleanupAsyncStackTrace(stackTrace:StackTrace) : string
+}
+@enduml

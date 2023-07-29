@@ -1,0 +1,76 @@
+@startuml
+class UniTaskAsyncEnumerable <<static>> <<partial>> {
+    + {static} SkipWhile(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, Boolean>) : IUniTaskAsyncEnumerable<TSource>
+    + {static} SkipWhile(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, Int32, Boolean>) : IUniTaskAsyncEnumerable<TSource>
+    + {static} SkipWhileAwait(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, UniTask<Boolean>>) : IUniTaskAsyncEnumerable<TSource>
+    + {static} SkipWhileAwait(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, Int32, UniTask<Boolean>>) : IUniTaskAsyncEnumerable<TSource>
+    + {static} SkipWhileAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, CancellationToken, UniTask<Boolean>>) : IUniTaskAsyncEnumerable<TSource>
+    + {static} SkipWhileAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, Int32, CancellationToken, UniTask<Boolean>>) : IUniTaskAsyncEnumerable<TSource>
+}
+class "SkipWhile`1"<TSource> <<sealed>> {
+    + SkipWhile(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, bool>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TSource>
+}
+class "SkipWhileInt`1"<TSource> <<sealed>> {
+    + SkipWhileInt(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, int, bool>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TSource>
+}
+class "SkipWhileAwait`1"<TSource> <<sealed>> {
+    + SkipWhileAwait(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, UniTask<bool>>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TSource>
+}
+class "SkipWhileIntAwait`1"<TSource> <<sealed>> {
+    + SkipWhileIntAwait(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, int, UniTask<bool>>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TSource>
+}
+class "SkipWhileAwaitWithCancellation`1"<TSource> <<sealed>> {
+    + SkipWhileAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, CancellationToken, UniTask<bool>>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TSource>
+}
+class "SkipWhileIntAwaitWithCancellation`1"<TSource> <<sealed>> {
+    + SkipWhileIntAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, int, CancellationToken, UniTask<bool>>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TSource>
+}
+class "IUniTaskAsyncEnumerable`1"<T> {
+}
+class _SkipWhile {
+    + _SkipWhile(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, bool>, cancellationToken:CancellationToken)
+}
+class _SkipWhileInt {
+    + _SkipWhileInt(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, int, bool>, cancellationToken:CancellationToken)
+}
+class _SkipWhileAwait {
+    + _SkipWhileAwait(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, UniTask<bool>>, cancellationToken:CancellationToken)
+}
+class _SkipWhileIntAwait {
+    + _SkipWhileIntAwait(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, int, UniTask<bool>>, cancellationToken:CancellationToken)
+}
+class _SkipWhileAwaitWithCancellation {
+    + _SkipWhileAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, CancellationToken, UniTask<bool>>, cancellationToken:CancellationToken)
+}
+class _SkipWhileIntAwaitWithCancellation {
+    + _SkipWhileIntAwaitWithCancellation(source:IUniTaskAsyncEnumerable<TSource>, predicate:Func<TSource, int, CancellationToken, UniTask<bool>>, cancellationToken:CancellationToken)
+}
+class "AsyncEnumeratorBase`2"<T1,T2> {
+}
+class "AsyncEnumeratorAwaitSelectorBase`3"<T1,T2,T3> {
+}
+"IUniTaskAsyncEnumerable`1" "<TSource>" <|-- "SkipWhile`1"
+"IUniTaskAsyncEnumerable`1" "<TSource>" <|-- "SkipWhileInt`1"
+"IUniTaskAsyncEnumerable`1" "<TSource>" <|-- "SkipWhileAwait`1"
+"IUniTaskAsyncEnumerable`1" "<TSource>" <|-- "SkipWhileIntAwait`1"
+"IUniTaskAsyncEnumerable`1" "<TSource>" <|-- "SkipWhileAwaitWithCancellation`1"
+"IUniTaskAsyncEnumerable`1" "<TSource>" <|-- "SkipWhileIntAwaitWithCancellation`1"
+"SkipWhile`1" +-- _SkipWhile
+"AsyncEnumeratorBase`2" "<TSource,TSource>" <|-- _SkipWhile
+"SkipWhileInt`1" +-- _SkipWhileInt
+"AsyncEnumeratorBase`2" "<TSource,TSource>" <|-- _SkipWhileInt
+"SkipWhileAwait`1" +-- _SkipWhileAwait
+"AsyncEnumeratorAwaitSelectorBase`3" "<TSource,TSource,bool>" <|-- _SkipWhileAwait
+"SkipWhileIntAwait`1" +-- _SkipWhileIntAwait
+"AsyncEnumeratorAwaitSelectorBase`3" "<TSource,TSource,bool>" <|-- _SkipWhileIntAwait
+"SkipWhileAwaitWithCancellation`1" +-- _SkipWhileAwaitWithCancellation
+"AsyncEnumeratorAwaitSelectorBase`3" "<TSource,TSource,bool>" <|-- _SkipWhileAwaitWithCancellation
+"SkipWhileIntAwaitWithCancellation`1" +-- _SkipWhileIntAwaitWithCancellation
+"AsyncEnumeratorAwaitSelectorBase`3" "<TSource,TSource,bool>" <|-- _SkipWhileIntAwaitWithCancellation
+@enduml

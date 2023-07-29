@@ -1,0 +1,8 @@
+@startuml
+class "PooledDelegate`1"<T> <<sealed>> {
+    + {static} Create(continuation:Action) : Action<T>
+}
+class "ITaskPoolNode`1"<T> {
+}
+"ITaskPoolNode`1" "<PooledDelegate<T>>" <|-- "PooledDelegate`1"
+@enduml

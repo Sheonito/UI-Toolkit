@@ -1,0 +1,17 @@
+@startuml
+class AsyncTriggerExtensions <<static>> <<partial>> {
+    + {static} GetAsyncDestroyTrigger(gameObject:GameObject) : AsyncDestroyTrigger
+    + {static} GetAsyncDestroyTrigger(component:Component) : AsyncDestroyTrigger
+}
+class AsyncDestroyTrigger <<sealed>> {
+    + OnDestroyAsync() : UniTask
+}
+class AwakeMonitor {
+    + AwakeMonitor(trigger:AsyncDestroyTrigger)
+    + MoveNext() : bool
+}
+MonoBehaviour <|-- AsyncDestroyTrigger
+AsyncDestroyTrigger --> "CancellationToken" CancellationToken
+AsyncDestroyTrigger +-- AwakeMonitor
+IPlayerLoopItem <|-- AwakeMonitor
+@enduml

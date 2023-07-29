@@ -1,0 +1,8 @@
+@startuml
+class ContinuationQueue <<sealed>> {
+    + ContinuationQueue(timing:PlayerLoopTiming)
+    + Enqueue(continuation:Action) : void
+    + Clear() : int
+    + Run() : void
+}
+@enduml

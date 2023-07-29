@@ -1,0 +1,20 @@
+@startuml
+abstract class "AsyncEnumeratorBase`2"<TSource,TResult> {
+    + AsyncEnumeratorBase(source:IUniTaskAsyncEnumerable<TSource>, cancellationToken:CancellationToken)
+    + Current : TResult <<get>> <<protected set>>
+    + MoveNextAsync() : UniTask<bool>
+    + <<virtual>> DisposeAsync() : UniTask
+}
+abstract class "AsyncEnumeratorAwaitSelectorBase`3"<TSource,TResult,TAwait> {
+    + AsyncEnumeratorAwaitSelectorBase(source:IUniTaskAsyncEnumerable<TSource>, cancellationToken:CancellationToken)
+    + Current : TResult <<get>> <<protected set>>
+    + MoveNextAsync() : UniTask<bool>
+    + <<virtual>> DisposeAsync() : UniTask
+}
+class "IUniTaskAsyncEnumerator`1"<T> {
+}
+MoveNextSource <|-- "AsyncEnumeratorBase`2"
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- "AsyncEnumeratorBase`2"
+MoveNextSource <|-- "AsyncEnumeratorAwaitSelectorBase`3"
+"IUniTaskAsyncEnumerator`1" "<TResult>" <|-- "AsyncEnumeratorAwaitSelectorBase`3"
+@enduml

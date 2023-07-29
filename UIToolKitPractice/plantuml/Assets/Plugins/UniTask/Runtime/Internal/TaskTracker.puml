@@ -1,0 +1,8 @@
+@startuml
+class TaskTracker <<static>> {
+    + {static} TrackActiveTask(task:IUniTaskSource, skipFrame:int) : void
+    + {static} RemoveTracking(task:IUniTaskSource) : void
+    + {static} CheckAndResetDirty() : bool
+    + {static} ForEachActiveTask(action:Action<int, string, UniTaskStatus, DateTime, string>) : void
+}
+@enduml

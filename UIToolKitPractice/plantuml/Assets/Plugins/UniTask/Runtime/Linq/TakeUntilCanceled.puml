@@ -1,0 +1,23 @@
+@startuml
+class UniTaskAsyncEnumerable <<static>> <<partial>> {
+    + {static} TakeUntilCanceled(source:IUniTaskAsyncEnumerable<TSource>, cancellationToken:CancellationToken) : IUniTaskAsyncEnumerable<TSource>
+}
+class "TakeUntilCanceled`1"<TSource> <<sealed>> {
+    + TakeUntilCanceled(source:IUniTaskAsyncEnumerable<TSource>, cancellationToken:CancellationToken)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TSource>
+}
+class "IUniTaskAsyncEnumerable`1"<T> {
+}
+class _TakeUntilCanceled <<sealed>> {
+    + _TakeUntilCanceled(source:IUniTaskAsyncEnumerable<TSource>, cancellationToken1:CancellationToken, cancellationToken2:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+}
+class "IUniTaskAsyncEnumerator`1"<T> {
+}
+"IUniTaskAsyncEnumerable`1" "<TSource>" <|-- "TakeUntilCanceled`1"
+"TakeUntilCanceled`1" +-- _TakeUntilCanceled
+MoveNextSource <|-- _TakeUntilCanceled
+"IUniTaskAsyncEnumerator`1" "<TSource>" <|-- _TakeUntilCanceled
+_TakeUntilCanceled --> "Current" TSource
+@enduml

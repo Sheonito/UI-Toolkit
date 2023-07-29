@@ -1,0 +1,14 @@
+@startuml
+class UniTaskCancellationExtensions <<static>> {
+    + {static} GetCancellationTokenOnDestroy(gameObject:GameObject) : CancellationToken
+    + {static} GetCancellationTokenOnDestroy(component:Component) : CancellationToken
+}
+class AsyncTriggerExtensions <<static>> <<partial>> {
+    + {static} OnDestroyAsync(gameObject:GameObject) : UniTask
+    + {static} OnDestroyAsync(component:Component) : UniTask
+    + {static} StartAsync(gameObject:GameObject) : UniTask
+    + {static} StartAsync(component:Component) : UniTask
+    + {static} AwakeAsync(gameObject:GameObject) : UniTask
+    + {static} AwakeAsync(component:Component) : UniTask
+}
+@enduml

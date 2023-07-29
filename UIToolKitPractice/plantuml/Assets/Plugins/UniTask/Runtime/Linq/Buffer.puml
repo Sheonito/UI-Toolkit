@@ -1,0 +1,40 @@
+@startuml
+class UniTaskAsyncEnumerable <<static>> <<partial>> {
+    + {static} Buffer(source:IUniTaskAsyncEnumerable<TSource>, count:Int32) : IUniTaskAsyncEnumerable<IList<TSource>>
+    + {static} Buffer(source:IUniTaskAsyncEnumerable<TSource>, count:Int32, skip:Int32) : IUniTaskAsyncEnumerable<IList<TSource>>
+}
+class "Buffer`1"<TSource> <<sealed>> {
+    + Buffer(source:IUniTaskAsyncEnumerable<TSource>, count:int)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<IList<TSource>>
+}
+class "BufferSkip`1"<TSource> <<sealed>> {
+    + BufferSkip(source:IUniTaskAsyncEnumerable<TSource>, count:int, skip:int)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<IList<TSource>>
+}
+class "IUniTaskAsyncEnumerable`1"<T> {
+}
+class _Buffer <<sealed>> {
+    + _Buffer(source:IUniTaskAsyncEnumerable<TSource>, count:int, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+}
+class _BufferSkip <<sealed>> {
+    + _BufferSkip(source:IUniTaskAsyncEnumerable<TSource>, count:int, skip:int, cancellationToken:CancellationToken)
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+}
+class "IUniTaskAsyncEnumerator`1"<T> {
+}
+class "IList`1"<T> {
+}
+"IUniTaskAsyncEnumerable`1" "<IList<TSource>>" <|-- "Buffer`1"
+"IUniTaskAsyncEnumerable`1" "<IList<TSource>>" <|-- "BufferSkip`1"
+"Buffer`1" +-- _Buffer
+MoveNextSource <|-- _Buffer
+"IUniTaskAsyncEnumerator`1" "<IList<TSource>>" <|-- _Buffer
+_Buffer --> "Current<TSource>" "IList`1"
+"BufferSkip`1" +-- _BufferSkip
+MoveNextSource <|-- _BufferSkip
+"IUniTaskAsyncEnumerator`1" "<IList<TSource>>" <|-- _BufferSkip
+_BufferSkip --> "Current<TSource>" "IList`1"
+@enduml

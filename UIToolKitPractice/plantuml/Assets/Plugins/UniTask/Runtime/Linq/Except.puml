@@ -1,0 +1,20 @@
+@startuml
+class UniTaskAsyncEnumerable <<static>> <<partial>> {
+    + {static} Except(first:IUniTaskAsyncEnumerable<TSource>, second:IUniTaskAsyncEnumerable<TSource>) : IUniTaskAsyncEnumerable<TSource>
+    + {static} Except(first:IUniTaskAsyncEnumerable<TSource>, second:IUniTaskAsyncEnumerable<TSource>, comparer:IEqualityComparer<TSource>) : IUniTaskAsyncEnumerable<TSource>
+}
+class "Except`1"<TSource> <<sealed>> {
+    + Except(first:IUniTaskAsyncEnumerable<TSource>, second:IUniTaskAsyncEnumerable<TSource>, comparer:IEqualityComparer<TSource>)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<TSource>
+}
+class "IUniTaskAsyncEnumerable`1"<T> {
+}
+class _Except {
+    + _Except(first:IUniTaskAsyncEnumerable<TSource>, second:IUniTaskAsyncEnumerable<TSource>, comparer:IEqualityComparer<TSource>, cancellationToken:CancellationToken)
+}
+class "AsyncEnumeratorBase`2"<T1,T2> {
+}
+"IUniTaskAsyncEnumerable`1" "<TSource>" <|-- "Except`1"
+"Except`1" +-- _Except
+"AsyncEnumeratorBase`2" "<TSource,TSource>" <|-- _Except
+@enduml

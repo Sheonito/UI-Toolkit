@@ -1,0 +1,9 @@
+@startuml
+class RuntimeHelpersAbstraction <<static>> {
+    + {static} IsWellKnownNoReferenceContainsType() : bool
+}
+class "WellKnownNoReferenceContainsType`1"<T> <<static>> {
+    + {static} <<readonly>> IsWellKnownType : bool
+}
+RuntimeHelpersAbstraction +-- "WellKnownNoReferenceContainsType`1"
+@enduml

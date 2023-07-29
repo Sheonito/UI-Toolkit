@@ -1,0 +1,22 @@
+@startuml
+class UniTaskAsyncEnumerable <<static>> <<partial>> {
+    + {static} Range(start:int, count:int) : IUniTaskAsyncEnumerable<int>
+}
+class Range {
+    + Range(start:int, count:int)
+    + GetAsyncEnumerator(cancellationToken:CancellationToken) : IUniTaskAsyncEnumerator<int>
+}
+class "IUniTaskAsyncEnumerable`1"<T> {
+}
+class _Range {
+    + _Range(start:int, end:int, cancellationToken:CancellationToken)
+    + Current : int <<get>>
+    + MoveNextAsync() : UniTask<bool>
+    + DisposeAsync() : UniTask
+}
+class "IUniTaskAsyncEnumerator`1"<T> {
+}
+"IUniTaskAsyncEnumerable`1" "<int>" <|-- Range
+Range +-- _Range
+"IUniTaskAsyncEnumerator`1" "<int>" <|-- _Range
+@enduml

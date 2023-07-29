@@ -1,0 +1,24 @@
+@startuml
+class AsyncUniTaskMethodBuilder <<struct>> {
+    + {static} Create() : AsyncUniTaskMethodBuilder
+    + SetException(exception:Exception) : void
+    + SetResult() : void
+    + AwaitOnCompleted(awaiter:TAwaiter, stateMachine:TStateMachine) : void
+    + AwaitUnsafeOnCompleted(awaiter:TAwaiter, stateMachine:TStateMachine) : void
+    + Start(stateMachine:TStateMachine) : void
+    + SetStateMachine(stateMachine:IAsyncStateMachine) : void
+}
+class "AsyncUniTaskMethodBuilder`1"<T> <<struct>> {
+    + {static} Create() : AsyncUniTaskMethodBuilder<T>
+    + SetException(exception:Exception) : void
+    + SetResult(result:T) : void
+    + AwaitOnCompleted(awaiter:TAwaiter, stateMachine:TStateMachine) : void
+    + AwaitUnsafeOnCompleted(awaiter:TAwaiter, stateMachine:TStateMachine) : void
+    + Start(stateMachine:TStateMachine) : void
+    + SetStateMachine(stateMachine:IAsyncStateMachine) : void
+}
+class "UniTask`1"<T> {
+}
+AsyncUniTaskMethodBuilder --> "Task" UniTask
+"AsyncUniTaskMethodBuilder`1" --> "Task<T>" "UniTask`1"
+@enduml

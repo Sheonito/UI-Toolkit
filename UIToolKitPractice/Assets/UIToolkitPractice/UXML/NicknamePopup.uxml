@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UIToolkitPractice/USS/myTextField-label.uss?fileID=7433441132597879392&amp;guid=d69b479eefefedb488e6955370179983&amp;type=3#myTextField-label" />
+    <ui:VisualElement name="background" class="myTextField-input" style="width: 100%; height: 100%; background-image: url(&apos;project://database/Assets/Resource/Image/%EB%AC%B4%EB%AF%BC%20%EA%B0%80%EB%A1%9C%20%EB%B0%B0%EA%B2%BD.jpg?fileID=2800000&amp;guid=63ea97466c0063048a57052caf37cb15&amp;type=3#무민 가로 배경&apos;); align-items: center; justify-content: center;">
+        <ui:VisualElement name="nicknamepopup" class="nicknamepopup-scaleup nicknamepopup-scaledown" style="flex-shrink: 1; flex-wrap: nowrap; flex-direction: column; align-items: center; justify-content: space-around; margin-left: 0; margin-right: 0; margin-top: 0; margin-bottom: 0; height: 680px; width: 1280px; display: flex;">
+            <ui:Label display-tooltip-when-elided="true" name="Label" style="-unity-font-definition: url(&apos;project://database/Assets/UIToolkitPractice/Font/PRETENDARD-BOLD%20SDF.asset?fileID=11400000&amp;guid=551bff6919cbe704f90fb0d981ead898&amp;type=2#PRETENDARD-BOLD SDF&apos;); display: flex; font-size: 72px;" />
+            <ui:TextField picking-mode="Ignore" label="닉네임" value="filler text" name="TextField" class="myTextField-label myTextField-input textField-fadein textField-fadeout" />
+            <ui:Button text="닉네임 생성" display-tooltip-when-elided="true" name="Button" class="button-fadein button-fadeout" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,0 +1,12 @@
+@startuml
+class TimeoutController <<sealed>> {
+    + TimeoutController(delayType:DelayType, delayTiming:PlayerLoopTiming)
+    + TimeoutController(linkCancellationTokenSource:CancellationTokenSource, delayType:DelayType, delayTiming:PlayerLoopTiming)
+    + Timeout(millisecondsTimeout:int) : CancellationToken
+    + Timeout(timeout:TimeSpan) : CancellationToken
+    + IsTimeout() : bool
+    + Reset() : void
+    + Dispose() : void
+}
+IDisposable <|-- TimeoutController
+@enduml

@@ -1,0 +1,6 @@
+@startuml
+class Temp2 {
+}
+MonoBehaviour <|-- Temp2
+Temp2 --> "page" NicknamePage
+@enduml

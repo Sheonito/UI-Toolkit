@@ -1,0 +1,23 @@
+@startuml
+class UnityAsyncExtensions <<static>> <<partial>> {
+    + {static} GetAwaiter(asyncOperation:AsyncGPUReadbackRequest) : UniTask<AsyncGPUReadbackRequest>.Awaiter
+    + {static} WithCancellation(asyncOperation:AsyncGPUReadbackRequest, cancellationToken:CancellationToken) : UniTask<AsyncGPUReadbackRequest>
+    + {static} ToUniTask(asyncOperation:AsyncGPUReadbackRequest, timing:PlayerLoopTiming, cancellationToken:CancellationToken) : UniTask<AsyncGPUReadbackRequest>
+}
+class AsyncGPUReadbackRequestAwaiterConfiguredSource <<sealed>> {
+    + {static} Create(asyncOperation:AsyncGPUReadbackRequest, timing:PlayerLoopTiming, cancellationToken:CancellationToken, token:short) : IUniTaskSource<AsyncGPUReadbackRequest>
+    + GetResult(token:short) : AsyncGPUReadbackRequest
+    + GetStatus(token:short) : UniTaskStatus
+    + UnsafeGetStatus() : UniTaskStatus
+    + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+    + MoveNext() : bool
+}
+class "IUniTaskSource`1"<T> {
+}
+class "ITaskPoolNode`1"<T> {
+}
+UnityAsyncExtensions +-- AsyncGPUReadbackRequestAwaiterConfiguredSource
+"IUniTaskSource`1" "<AsyncGPUReadbackRequest>" <|-- AsyncGPUReadbackRequestAwaiterConfiguredSource
+IPlayerLoopItem <|-- AsyncGPUReadbackRequestAwaiterConfiguredSource
+"ITaskPoolNode`1" "<AsyncGPUReadbackRequestAwaiterConfiguredSource>" <|-- AsyncGPUReadbackRequestAwaiterConfiguredSource
+@enduml

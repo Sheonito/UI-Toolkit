@@ -1,0 +1,23 @@
+@startuml
+enum UniTaskStatus {
+    Pending= 0,
+    Succeeded= 1,
+    Faulted= 2,
+    Canceled= 3,
+}
+interface IUniTaskSource {
+}
+interface "IUniTaskSource`1"<out T> {
+    <<new>> + GetStatus(token:short) : UniTaskStatus
+    <<new>> + OnCompleted(continuation:Action<object>, state:object, token:short) : void
+}
+class UniTaskStatusExtensions <<static>> {
+    + {static} IsCompleted(status:UniTaskStatus) : bool
+    + {static} IsCompletedSuccessfully(status:UniTaskStatus) : bool
+    + {static} IsCanceled(status:UniTaskStatus) : bool
+    + {static} IsFaulted(status:UniTaskStatus) : bool
+}
+class "IValueTaskSource`1"<T> {
+}
+IUniTaskSource <|-- "IUniTaskSource`1"
+@enduml
